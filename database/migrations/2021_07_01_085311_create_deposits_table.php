@@ -15,9 +15,11 @@ class CreateDepositsTable extends Migration
     {
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
+            $table->timestamp("c_date");
             $table->integer("amount");
             $table->float("rate");
-            $table->timestamp("c_date");
+            $table->integer("jpy");
+            $table->text("note");
             $table->integer("user_id");
             $table->timestamps();
         });

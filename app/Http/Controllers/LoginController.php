@@ -40,7 +40,7 @@ class LoginController extends Controller
                 ->where('password', $data['password'])
                 ->first();
             if ($credentials) {
-                Auth::guard('admin')->login($credentials);
+                Auth::login($credentials);
                 //return redirect('groups');
                 return back();
             } else {

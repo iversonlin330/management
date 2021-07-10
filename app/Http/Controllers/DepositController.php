@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\DepositImport;
 use App\Models\Deposit;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DepositController extends Controller
 {
@@ -81,5 +83,12 @@ class DepositController extends Controller
     public function destroy(Deposit $deposit)
     {
         //
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new DepositImport, $request->file('excel')->store('temp'));
+
+        return redirect('/')->with('success', 'All good!');
     }
 }
