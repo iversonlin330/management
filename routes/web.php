@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,5 @@ Route::get('/test-import', function () {
     return view('test');
 });
 Route::post('/test-import', [DepositController::class, 'import']);
+
+Route::post('/test-upload', [TestController::class, 'upload']);
