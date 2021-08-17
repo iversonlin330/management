@@ -26,8 +26,25 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Ship whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Ship whereWeight($value)
  * @mixin \Eloquent
+ * @property string $tw_no
+ * @property string $price_buy
+ * @property string $price_ship
+ * @property string $price_total
+ * @property int $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Ship wherePriceBuy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ship wherePriceShip($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ship wherePriceTotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ship whereTwNo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ship whereUserId($value)
  */
 class Ship extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function attachments()
+    {
+        return $this->hasMany('App\Models\Attachment','ship_id','id');
+    }
 }

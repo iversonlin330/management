@@ -34,8 +34,23 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Transport whereTwNo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transport whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $price
+ * @property string $weight
+ * @property string $price_total
+ * @property string $weight_total
+ * @method static \Illuminate\Database\Eloquent\Builder|Transport wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transport wherePriceTotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transport whereWeight($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transport whereWeightTotal($value)
  */
 class Transport extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function ships()
+    {
+        return $this->hasMany('App\Models\Ship','transport_id','transport_no');
+    }
 }

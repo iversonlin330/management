@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\StoreImport;
+use App\Imports\TransportImport;
 use App\Models\Store;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StoreController extends Controller
 {
@@ -47,6 +50,7 @@ class StoreController extends Controller
     public function show(Store $store)
     {
         //
+        return view('store',compact('store'));
     }
 
     /**
@@ -81,5 +85,14 @@ class StoreController extends Controller
     public function destroy(Store $store)
     {
         //
+        $store->delete();
+        return back();
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new StoreImport, $request->file('file'));
+
+        return back();
     }
 }

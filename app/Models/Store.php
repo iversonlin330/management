@@ -30,4 +30,11 @@ use Illuminate\Database\Eloquent\Model;
 class Store extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function transports()
+    {
+        return $this->hasMany('App\Models\Transport','store_id','store_no');
+    }
 }

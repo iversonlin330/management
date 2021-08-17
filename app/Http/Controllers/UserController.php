@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Imports\ShipImport;
-use App\Models\Ship;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
-class ShipController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        $ships = Ship::whereTransportId($request['transport_id'])->get();
-        return view('ship', compact('ships'));
     }
 
     /**
@@ -34,7 +30,7 @@ class ShipController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -45,10 +41,10 @@ class ShipController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Ship $ship
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Ship $ship)
+    public function show(User $user)
     {
         //
     }
@@ -56,10 +52,10 @@ class ShipController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Ship $ship
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ship $ship)
+    public function edit(User $user)
     {
         //
     }
@@ -67,11 +63,11 @@ class ShipController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Ship $ship
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ship $ship)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -79,20 +75,13 @@ class ShipController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Ship $ship
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ship $ship)
+    public function destroy(User $user)
     {
         //
-        $ship->delete();
-        return back();
-    }
-
-    public function import(Request $request)
-    {
-        Excel::import(new ShipImport, $request->file('file'));
-
+        $user->delete();
         return back();
     }
 }

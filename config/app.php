@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -233,4 +233,11 @@ return [
 
     ],
 
+    'models' => [
+        '會員基本資料' => 'User',
+        '預付金紀錄' => 'Deposit',
+        '入倉履歷' => 'Store',
+        '運輸記錄' => 'Transport',
+        '出貨明細' => 'Ship',
+    ]
 ];

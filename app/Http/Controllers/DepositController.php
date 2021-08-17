@@ -83,12 +83,15 @@ class DepositController extends Controller
     public function destroy(Deposit $deposit)
     {
         //
+        $deposit->delete();
+        return back();
     }
 
     public function import(Request $request)
     {
-        Excel::import(new DepositImport, $request->file('excel')->store('temp'));
+        Excel::import(new DepositImport, $request->file('file'));
 
+        return back();
         return redirect('/')->with('success', 'All good!');
     }
 }

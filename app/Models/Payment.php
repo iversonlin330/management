@@ -24,8 +24,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereOrderNo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereUserId($value)
  */
 class Payment extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
 }

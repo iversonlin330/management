@@ -16,13 +16,16 @@ class CreateTransportsTable extends Migration
         Schema::create('transports', function (Blueprint $table) {
             $table->id();
             $table->string("store_id");
-            $table->string("transport_no");
             $table->string("name");
             $table->string("jan_code");
+            $table->string("price");
+            $table->string("weight");
             $table->string("amount");
+            $table->string("price_total");
+            $table->string("weight_total");
             $table->string("out_date");
             $table->string("box_no");
-            $table->string("tw_no");
+            $table->string("transport_no");
             $table->timestamps();
         });
     }

@@ -17,7 +17,8 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->string("order_no");
             $table->integer("amount");
-            $table->timestamp("c_date");
+            $table->integer("user_id");
+            $table->date("c_date");
             $table->timestamps();
         });
     }

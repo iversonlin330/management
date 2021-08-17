@@ -2,12 +2,12 @@
 
 namespace App\Imports;
 
-use App\Models\Deposit;
+use App\Models\Ship;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 
-class DepositImport implements ToModel, WithStartRow
+class ShipImport implements ToModel, WithStartRow
 {
     /**
      * @param array $row
@@ -16,13 +16,14 @@ class DepositImport implements ToModel, WithStartRow
      */
     public function model(array $row)
     {
-        return new Deposit([
-            'c_date' => Date::excelToDateTimeObject($row[0]),
-            'amount' => $row[1],
-            'rate' => $row[2],
-            'jpy' => $row[3],
-            'note' => $row[4],
-            'user_id' => (int)str_replace('CM', '', $row[5])
+        return new Ship([
+            'transport_id' => $row[0],
+            'tw_no' => $row[1],
+            'weight' => $row[2],
+            'price_buy' => $row[3],
+            'price_ship' => $row[4],
+            'price_total' => $row[5],
+            'user_id' => (int)str_replace('CM', '', $row[6])
 //            'c_date' => Date::excelToDateTimeObject($row['c_date']),
 //            'amount' => $row['amount'],
 //            'rate' => $row['rate'],

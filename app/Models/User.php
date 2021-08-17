@@ -47,6 +47,14 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $token
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereToken($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
+ * @property-read int|null $payments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Deposit[] $deposits
+ * @property-read int|null $deposits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Store[] $stores
+ * @property-read int|null $stores_count
  */
 class User extends Authenticatable
 {
@@ -57,11 +65,12 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+//    protected $fillable = [
+//        'name',
+//        'email',
+//        'password',
+//    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -81,4 +90,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+//    protected static function boot()
+//    {
+//        parent::boot();
+//
+//        static::saving(function ($model) {
+//            dd($model);
+//            $model->u_id = 'CM' . $model->id;
+//            $model->save();
+//        });
+//    }
+    public function getUIdAttribute(): string
+    {
+        return 'CM' . str_pad($this->id,'3','0',STR_PAD_LEFT);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany('App\Models\Payment','user_id','id');
+    }
+
+    public function deposits()
+    {
+        return $this->hasMany('App\Models\Deposit','user_id','id');
+    }
+
+    public function stores()
+    {
+        return $this->hasMany('App\Models\Store','user_id','id');
+    }
 }

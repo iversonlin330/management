@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShipsTable extends Migration
+class CreateAttachmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateShipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ships', function (Blueprint $table) {
+        Schema::create('attachments', function (Blueprint $table) {
             $table->id();
-            $table->string("transport_id");
-            $table->string("tw_no");
-            $table->string("weight");
-            $table->string("price_buy");
-            $table->string("price_ship");
-            $table->string("price_total");
-            $table->integer("user_id");
+            $table->integer('ship_id');
+            $table->string('name');
+            $table->string('path');
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ class CreateShipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ships');
+        Schema::dropIfExists('attachments');
     }
 }

@@ -17,7 +17,7 @@ class CreateStoresTable extends Migration
             $table->id();
             $table->string("store_no");
             $table->string("location");
-            $table->timestamp("c_date");
+            $table->date("c_date");
             $table->integer("user_id");
             $table->timestamps();
         });
