@@ -45,6 +45,7 @@ class LoginController extends Controller
             $credentials = User::where('account', $data['account'])
                 ->where('password', $data['password'])
                 ->first();
+                // dd($credentials);
             if ($credentials) {
                 Auth::login($credentials);
                 return redirect('admin');

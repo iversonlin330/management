@@ -1,49 +1,8 @@
-<!-- @include('sidebar')
-出貨明細:{{ $transport->transport_no }}<br>
-<table>
-    <thead>
-    <th>台灣國內單號</th>
-    <th>包裹總重量</th>
-    <th>購物金額</th>
-    <th>運費金額</th>
-    <th>金額總計</th>
-    <th>附件查詢</th>
-    <th>刪除</th>
-    </thead>
-    @foreach($transport->ships as $ship)
-        <tr>
-            <td>{{ $ship->transport_id }}</td>
-            <td>{{ $ship->tw_no }}</td>
-            <td>{{ $ship->price_buy }}</td>
-            <td>{{ $ship->price_ship }}</td>
-            <td>{{ $ship->price_total }}</td>
-            <td>
-                @foreach($ship->attachments as $attachment)
-                    <a href="{{ asset('storage/'.$attachment->path)  }}" target="_blank">{{ $attachment->name }}</a>
-                    <form action="{{ url('attachments/'.$attachment->id) }}" method="post">
-                        @method('DELETE')
-                        <input type="submit" value="刪除">
-                    </form>
-                    <br>
-                @endforeach
-                <a onclick='$(this).parent().find("[name=\"file\"]").click()'>上傳</a>
-                <form action="{{ url('/attachments/upload?ship_id='.$ship->id) }}" method="post" enctype="multipart/form-data" hidden>
-                    <input type="file" name="file" onchange="$(this).parent().submit()">
-                    <input type="submit">
-                </form>
-            </td>
-            <td>編輯X
-                <form action="{{ url('ships/'.$ship->id) }}" method="post">
-                    @method('DELETE')
-                    <input type="submit" value="刪除">
-                </form>
-            </td>
-        </tr>
-    @endforeach
-</table> -->
+<!doctype html>
+<html lang="en">
 
 <head>
-    <title>出貨明細</title>
+    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,9 +11,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/transport.blade.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/swap.css') }}">
+    <link rel="stylesheet" href="/management-master/test/css/sidebar.css">
+    <link rel="stylesheet" href="/management-master/test/css/transport.blade.css">
+    <link rel="stylesheet" href="/management-master/test/css/swap.css">
 
 </head>
 
@@ -63,10 +22,9 @@
     <section class="shipment-section container-fluid">
         <div class="shipment-main row col-12">
             <!-- sidebar -->
-            @if(Auth::user()->role == 99)
             <div class="sidebar col-lg-2">
                 <div class="sidebar-logo">
-                    <img src="{{ asset('css/image/login-logo.png') }}" alt="">
+                    <img src="/management-master/public/css/image/login-logo.png" alt="">
                 </div>
                 <!--/ vendor sidebar-card /-->
                 <div id="accordion" class="sidebar-accordion vendor-sidebar">
@@ -76,8 +34,8 @@
                             <h5 class="mb-0 sidebar-title">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne">
-                                    <img src="{{ asset('css/image/siderbar-img-01.png') }}" alt="">
-                                    <a href="{{ url('admin') }}">會員管理</a>
+                                    <img src="/management-master/public/css/image/siderbar-img-01.png" alt="">
+                                    會員管理
                                 </button>
                             </h5>
                         </div>
@@ -88,10 +46,10 @@
                             <h5 class="mb-0 sidebar-title">
                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="false" aria-controls="collapseTwo">
-                                    <img style="margin-left:5px" src="{{ asset('css/image/siderbar-img-02.png') }}" alt="">
+                                    <img style="margin-left:5px" src="/management-master/public/css/image/siderbar-img-02.png" alt="">
                                     資料匯入
                                     <div class="sidebar-down">
-                                        <img src="{{ asset('css/image/siderbar-img-03.png') }}" alt="">
+                                        <img src="/management-master/public/css/image/siderbar-img-03.png" alt="">
                                     </div>
                                 </button>
                             </h5>
@@ -100,9 +58,9 @@
                             data-parent="#accordion">
                             <div class="card-body">
                                 <ul class="siderbar-list">
-                                    <li onclick='$("#store_input").click()'>匯入入倉履歷</li>
-                                    <li onclick='$("#transport_input").click()'>匯入運輸紀錄</li>
-                                    <li onclick='$("#ship_input").click()'>匯入出貨明細</li>
+                                    <li>匯入入倉履歷</li>
+                                    <li>匯入運輸紀錄</li>
+                                    <li>匯入出貨明細</li>
                                 </ul>
                             </div>
                         </div>
@@ -136,28 +94,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- form data -->
-                <form action="{{ url('/stores/import') }}" method="post" enctype="multipart/form-data" hidden>
-                    入倉履歷匯入
-                    <input id="store_input" type="file" name="file" onchange="$(this).parent().submit()">
-                    <input type="submit">
-                 </form>
-
-                <form action="{{ url('/transports/import') }}" method="post" enctype="multipart/form-data" hidden>
-                    運輸紀錄匯入
-                    <input id="transport_input" type="file" name="file" onchange="$(this).parent().submit()">
-                    <input type="submit">
-                </form>
-
-                <form action="{{ url('/ships/import') }}" method="post" enctype="multipart/form-data" hidden>
-                    出貨明細匯入
-                    <input id="ship_input" type="file" name="file" onchange="$(this).parent().submit()">
-                    <input type="submit">
-                </form>
             </div>
-            @else
-
-            @endif
             <!-- shipment body -->
             <div class="shipment-body col-lg-10">
                 <!-- mark -->
@@ -177,7 +114,7 @@
                     <!-- shipment block  -->
                     <div class="shipment-block col-lg-12">
                         <div class="shipment-title">
-                            <h2>運輸紀錄： <span class="shipment-num">{{ $transport->transport_no }}</span></h2>
+                            <h2>運輸紀錄： <span class="shipment-num">5579498465456</span></h2>
                             <button class="btn shipment-add vendor-btn">新增</button>
                         </div>
                         <!-- table shipment -->
@@ -191,40 +128,96 @@
                                     <td>金額總計</td>
                                     <td>附件查詢</td>
                                 </tr>
-                                <!-- shipment data -->
-                                @foreach($transport->ships as $ship)
-                                    <tr class="infro-title gold-line">
-                                        <td>{{ $ship->transport_id }}</td>
-                                        <td>{{ $ship->tw_no }}</td>
-                                        <td>{{ $ship->price_buy }}</td>
-                                        <td>{{ $ship->price_ship }}</td>
-                                        <td>{{ $ship->price_total }}</td>
-                                        <td>
-                                            @foreach($ship->attachments as $attachment)
-                                             <div class="shipment-delete" style="display: flex;align-items:center;">
-                                                <a href="{{ asset('storage/'.$attachment->path)  }}" target="_blank">{{ $attachment->name }}</a>
-                                                <form style="margin-bottom:0px" action="{{ url('attachments/'.$attachment->id) }}" method="post">
-                                                    @method('DELETE')
-                                                    <input style="background-color: unset;font-size: 10px;color: #000;border: unset;border-radius: 4px;" type="submit" value="X">
-                                                </form>
-                                             </div>
-                                            <br>
-                                            @endforeach
-                                            <a onclick='$(this).parent().find("[name=\"file\"]").click()'>上傳</a>
-                                            <form action="{{ url('/attachments/upload?ship_id='.$ship->id) }}" method="post" enctype="multipart/form-data" hidden>
-                                                <input type="file" name="file" onchange="$(this).parent().submit()">
-                                                <input type="submit">
-                                            </form>
-                                        </td>
-                                        <td class="shipment-btn vendor-btn">
-                                            <form action="{{ url('ships/'.$ship->id) }}" method="post">
-                                                <input type="button" value="編輯">
-                                                @method('DELETE')
-                                                <input type="submit" value="刪除">
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                <!-- shipment data-01 -->
+                                <tr class="infro-title gold-line">
+                                    <td>新竹貨運 489820370</td>
+                                    <td>1.5g</td>
+                                    <td>10000</td>
+                                    <td>10000</td>
+                                    <td>20000</td>
+                                    <td class="shipment-btn">
+                                        <button class="btn">上傳</button>
+                                    </td>
+                                    <td class="shipment-btn vendor-btn">
+                                        <button class="btn">編輯</button>
+                                        <button class="btn">刪除</button>
+                                    </td>
+                                </tr>
+                                <!-- shipment data-02 -->
+                                <tr class="infro-title gold-line">
+                                    <td>新竹貨運 489820370</td>
+                                    <td>1.5g</td>
+                                    <td>10000</td>
+                                    <td>10000</td>
+                                    <td>20000</td>
+                                    <td class="shipment-btn">
+                                        <button class="btn">上傳</button>
+                                    </td>
+                                    <td class="shipment-btn vendor-btn">
+                                        <button class="btn">編輯</button>
+                                        <button class="btn">刪除</button>
+                                    </td>
+                                </tr>
+                                <!-- shipment data-03 -->
+                                <tr class="infro-title gold-line">
+                                    <td>新竹貨運 489820370</td>
+                                    <td>1.5g</td>
+                                    <td>10000</td>
+                                    <td>10000</td>
+                                    <td>20000</td>
+                                    <td class="shipment-btn">
+                                        <button class="btn">上傳</button>
+                                    </td>
+                                    <td class="shipment-btn vendor-btn">
+                                        <button class="btn">編輯</button>
+                                        <button class="btn">刪除</button>
+                                    </td>
+                                </tr>
+                                <!-- shipment data-04 -->
+                                <tr class="infro-title gold-line">
+                                    <td>新竹貨運 489820370</td>
+                                    <td>1.5g</td>
+                                    <td>10000</td>
+                                    <td>10000</td>
+                                    <td>20000</td>
+                                    <td class="shipment-btn">
+                                        <button class="btn">上傳</button>
+                                    </td>
+                                    <td class="shipment-btn vendor-btn">
+                                        <button class="btn">編輯</button>
+                                        <button class="btn">刪除</button>
+                                    </td>
+                                </tr>
+                                <!-- shipment data-05 -->
+                                <tr class="infro-title gold-line">
+                                    <td>新竹貨運 489820370</td>
+                                    <td>1.5g</td>
+                                    <td>10000</td>
+                                    <td>10000</td>
+                                    <td>20000</td>
+                                    <td class="shipment-btn">
+                                        <button class="btn">上傳</button>
+                                    </td>
+                                    <td class="shipment-btn vendor-btn">
+                                        <button class="btn">編輯</button>
+                                        <button class="btn">刪除</button>
+                                    </td>
+                                </tr>
+                                <!-- shipment data-06 -->
+                                <tr class="infro-title gold-line">
+                                    <td>新竹貨運 489820370</td>
+                                    <td>1.5g</td>
+                                    <td>10000</td>
+                                    <td>10000</td>
+                                    <td>20000</td>
+                                    <td class="shipment-btn">
+                                        <button class="btn">上傳</button>
+                                    </td>
+                                    <td class="shipment-btn vendor-btn">
+                                        <button class="btn">編輯</button>
+                                        <button class="btn">刪除</button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -245,3 +238,5 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
+
+</html>
