@@ -369,8 +369,10 @@
                             <div class="member-block">
                                 <div class="member-title">
                                     <h2>預付金儲值紀錄</h2>
+                                    @if(Auth::user()->role == 99)
                                     <button class="btn member-infro gold-add vendor-btn" data-toggle="modal"
                                         data-target="#goldEditModal">新增</button>
+                                    @endif
                                 </div>
                                 <!-- gold edit modal -->
                                 <div class="modal edit-modal" id="goldEditModal" tabindex="-1" role="dialog"
@@ -385,29 +387,31 @@
                                                 </button>
                                             </div>
                                             <!-- gold edit body -->
+                                            <form action="{{ url('deposits') }}" method="post">
                                             <div class="modal-body edit-body">
                                                 <span class="edit-data gold-data">
-                                                    <p>儲值日期</p><input type="date" placeholder="2021年月14號">
+                                                    <p>儲值日期</p><input type="date" name="c_date" placeholder="2021年月14號">
                                                 </span>
                                                 <span class="edit-data">
-                                                    <p>儲值金額 <br> (台幣)</p><input type="number" placeholder="10,000">
+                                                    <p>儲值金額 <br> (台幣)</p><input type="number" name="amount" placeholder="10,000">
                                                 </span>
                                                 <span class="edit-data gold-data">
-                                                    <p>使用匯率</p><input type="number" placeholder="0.265">
+                                                    <p>使用匯率</p><input type="number" name="rate" placeholder="0.265">
                                                 </span>
                                                 <span class="edit-data gold-data">
-                                                    <p>日幣金額</p><input type="number" placeholder="37,736">
+                                                    <p>日幣金額</p><input type="number" name="jpy" placeholder="37,736">
                                                 </span>
                                                 <span class="edit-data gold-data">
-                                                    <p>備註</p><input type="text" placeholder="說明文字內容">
+                                                    <p>備註</p><input type="text" name="note" placeholder="說明文字內容">
                                                 </span>
                                             </div>
                                             <!-- gold edit submit -->
                                             <div class="modal-footer edit-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">關閉</button>
-                                                <button type="button" class="btn btn-primary">儲存變更</button>
+                                                <button type="submit" class="btn btn-primary">儲存變更</button>
                                             </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

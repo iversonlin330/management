@@ -53,6 +53,7 @@ class IndexController extends Controller
     public function member(Request $request)
     {
         $current_user = \Session::get('admin_user');
+        $current_user = User::find($current_user->id);
 
         $use_datas = [];
         $total_use = 0;
