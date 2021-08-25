@@ -242,37 +242,37 @@
                                     <!-- vendor edit body -->
                                     <div class="modal-body edit-body vendor-modal">
                                         <span class="edit-data">
-                                            <p>會員編號</p><span class="member-num">CM001</span>
+                                            <p>會員編號</p><span class="member-num">{{ $current_user->u_id }}</span>
                                         </span>
                                         <span class="edit-data">
-                                            <p>真實姓名</p><input type="text" placeholder="王喜花">
+                                            <p>真實姓名</p><input type="text" name="name" value="{{ $current_user->name }}">
                                         </span>
                                         <span class="edit-data">
-                                            <p>出生年月日</p><input type="date" placeholder="1990-05-13">
+                                            <p>出生年月日</p><input type="date" name="birthday" value="{{ $current_user->birthday }}">
                                         </span>
                                         <span class="edit-data">
-                                            <p>聯絡地址</p><input type="text" placeholder="台北市中正區辛亥路一段3號">
+                                            <p>聯絡地址</p><input type="text" name="address" value="{{ $current_user->address }}">
                                         </span>
                                         <span class="edit-data">
-                                            <p>聯絡電話</p><input type="tel" placeholder="0925698755">
+                                            <p>聯絡電話</p><input type="tel" name="account" value="{{ $current_user->account }}">
                                         </span>
                                         <span class="edit-data">
-                                            <p>密碼</p><input type="password" placeholder="XXXXXX">
+                                            <p>密碼</p><input type="password" name="password" value="{{ $current_user->password }}">
                                         </span>
                                         <span class="edit-data">
-                                            <p>收件地址</p><input type="text" placeholder="台北市中正區辛亥路一段3號">
+                                            <p>收件地址</p><input type="text" name="get_address" value="{{ $current_user->get_address }}">
                                         </span>
                                         <span class="edit-data">
-                                            <p>收件人電話</p><input type="tel" placeholder="0925698755">
+                                            <p>收件人電話</p><input type="tel" name="get_phone" value="{{ $current_user->get_phone }}">
                                         </span>
                                         <span class="edit-data">
-                                            <p>LINE ID</p><input type="text" placeholder="abc1234">
+                                            <p>LINE ID</p><input type="text" name="line_id" value="{{ $current_user->line_id }}">
                                         </span>
                                         <span class="edit-data">
-                                            <p>電子信箱</p><input type="email" placeholder="abc123@gmail.com">
+                                            <p>電子信箱</p><input type="email" name="email" value="{{ $current_user->email }}">
                                         </span>
                                         <span class="edit-data">
-                                            <p>性別</p><input type="text" placeholder="女">
+                                            <p>性別</p><input type="text" name="gender" value="{{ $current_user->gender }}">
                                         </span>
                                     </div>
                                     <!-- infro edit submit -->
