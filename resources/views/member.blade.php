@@ -112,11 +112,11 @@
     <section class="member-section container-fluid">
         <div class="member-main row col-12">
             <!-- sidebar -->
-            @if(Auth::user()->role == 99)
             <div class="sidebar col-lg-2">
                 <div class="sidebar-logo">
                     <img src="{{ asset('css/image/login-logo.png') }}" alt="">
                 </div>
+                @if(Auth::user()->role ==99)
                 <!--/ vendor sidebar-card /-->
                 <div id="accordion" class="sidebar-accordion vendor-sidebar">
                     <!--sidebar-card-->
@@ -125,7 +125,7 @@
                             <h5 class="mb-0 sidebar-title">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne">
-                                    <img src="{{ asset('css/image/siderbar-img-01.png') }}" alt="">
+                                    <img src="{{ asset('css/image/sidebar-img-01.png') }}" alt="">
                                     <a href="{{ url('admin') }}">會員管理</a>
                                 </button>
                             </h5>
@@ -137,10 +137,10 @@
                             <h5 class="mb-0 sidebar-title">
                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="false" aria-controls="collapseTwo">
-                                    <img style="margin-left:5px" src="{{ asset('css/image/siderbar-img-02.png') }}" alt="">
+                                    <img style="margin-left:5px" src="{{ asset('css/image/sidebar-img-02.png') }}" alt="">
                                     資料匯入
                                     <div class="sidebar-down">
-                                        <img src="{{ asset('css/image/siderbar-img-03.png') }}" alt="">
+                                        <img src="{{ asset('css/image/sidebar-img-03.png') }}" alt="">
                                     </div>
                                 </button>
                             </h5>
@@ -148,7 +148,7 @@
                         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
                             data-parent="#accordion">
                             <div class="card-body">
-                                <ul class="siderbar-list">
+                                <ul class="sidebar-list">
                                     <li onclick='$("#store_input").click()'>匯入入倉履歷</li>
                                     <li onclick='$("#transport_input").click()'>匯入運輸紀錄</li>
                                     <li onclick='$("#ship_input").click()'>匯入出貨明細</li>
@@ -157,6 +157,8 @@
                         </div>
                     </div>
                 </div>
+                @else
+                @endif
                 <!--/ member sidebar-card /-->
                 <div id="accordion" class="sidebar-accordion member-sidebar">
                     <!--sidebar-card-->
@@ -165,10 +167,10 @@
                             <h5 class="mb-0 sidebar-title">
                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="false" aria-controls="collapseTwo">
-                                    <img style="margin-left:5px" src="/management-master/public/css/image/siderbar-img-02.png" alt="">
+                                    <img style="margin-left:5px" src="{{ asset('css/image/sidebar-img-02.png') }}" alt="">
                                     首頁
                                     <div class="sidebar-down">
-                                        <img src="/management-master/public/css/image/siderbar-img-03.png" alt="">
+                                        <img src="{{ asset('css/image/sidebar-img-03.png') }}" alt="">
                                     </div>
                                 </button>
                             </h5>
@@ -176,7 +178,7 @@
                         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
                             data-parent="#accordion">
                             <div class="card-body">
-                                <ul class="siderbar-list">
+                                <ul class="sidebar-list">
                                     <li>個人基本資料</li>
                                     <li>預付金紀錄</li>
                                     <li>入倉履歷</li>
@@ -204,8 +206,6 @@
                     <input type="submit">
                 </form>
             </div>
-            @else
-            @endif
             <!-- member body -->
             <div class="member-body col-lg-10">
                 <!-- mark -->
@@ -213,7 +213,9 @@
                     <h1>千森株式會社會員管理平台</h1>
                     <div class="member-sort">
                         <p class="member-mark">首頁</p>
+                        @if(Auth::user() ->role == 99)
                         <p class="vendor-mark">會員管理 / <span class="sort-name">王喜花</span> </p>
+                        @endif
                     </div>
                 </div>
                 <!-- right memeber -->
@@ -222,8 +224,10 @@
                     <div class="member-block member-infro-block col-lg-4">
                         <div class="member-title">
                             <h2>會員基本資料</h2>
+                            @if(Auth::user() ->role == 99)
                             <button class="btn edit-infro vendor-btn" data-toggle="modal"
                                 data-target="#vendorEditModal">編輯</button>
+                            @endif
                             <button class="btn edit-infro member-btn" data-toggle="modal"
                                 data-target="#memberEditModal">變更密碼</button>
                         </div>
@@ -271,8 +275,10 @@
                                         <span class="edit-data">
                                             <p>電子信箱</p><input type="email" name="email" value="{{ $current_user->email }}">
                                         </span>
-                                        <span class="edit-data">
-                                            <p>性別</p><input type="text" name="gender" value="{{ $current_user->gender }}">
+                                        <span class="edit-data" style="align-items: center;">
+                                            <p>性別</p>
+                                            <input type="radio" name="gender" value="{{ $current_user->gender }}">女
+                                            <input type="radio" name="gender" value="{{ $current_user->gender }}">男
                                         </span>
                                     </div>
                                     <!-- infro edit submit -->
@@ -456,18 +462,6 @@
                                                     @endphp
                                                 @endforeach
                                             </tbody>
-                                            <!-- <tr class="infro-title stored-title gold-line">
-                                                <td>2021年5月14號</td>
-                                                <td>10,000</td>
-                                                <td>0.265</td>
-                                                <td>37736</td>
-                                                <td class="explanation">說明文字內容
-                                                    <div class="explanation-btn vendor-btn">
-                                                        <button class="btn">編輯</button>
-                                                        <button class="btn">刪除</button>
-                                                    </div>
-                                                </td>
-                                            </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -520,8 +514,10 @@
                             <div class="member-block">
                                 <div class="member-title">
                                     <h2>入倉履歷</h2>
+                                    @if(Auth::user()->role == 99)
                                     <button class="btn member-infro gold-add vendor-btn" data-toggle="modal"
                                         data-target="#goldAddModal">新增</button>
+                                    @endif
                                 </div>
                                 <!-- gold edit modal -->
                                 <div class="modal edit-modal" id="goldAddModal" tabindex="-1" role="dialog"

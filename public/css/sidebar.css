@@ -14,14 +14,14 @@ a{
     height: 100vh;
     background-color: #363740;
 }
-/* siderbar logo */
+/* sidebar logo */
 .sidebar-logo {
     padding: 40px 20px 20px 20px;
 }
 .sidebar-logo img {
     width: 100%;
 }
-/* siderbar-main */
+/* sidebar-main */
 .sidebar-card {
     background-color: none!important;
 }
@@ -61,13 +61,13 @@ a{
     padding: 0;
     position: relative;
 }
-.siderbar-list {
+.sidebar-list {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     padding: 0;
 }
-.siderbar-list li {
+.sidebar-list li {
     font-size: 14px;
     color: #A4A6B3;
     list-style: none;
