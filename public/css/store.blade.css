@@ -1,5 +1,5 @@
 /* transport */
-.col-lg-12,.col-lg-4,.col-lg-7,.col {
+.col-lg-12,.col-lg-4,.col-lg-7 {
     padding: 0;
 }
 .transport-body {
@@ -77,10 +77,10 @@
 .gold-line {
     border-bottom: 1px solid #DFDFDF;
 }
-.infro-title td {
+.stored-title td {
     color: #212529;
     font-size: 14px;
-    padding: 5px 0px 5px 5px;
+    padding: 5px 0px 5px 5px !important;
 }
 .transport-btn {
     margin-left: 10px;

@@ -12,9 +12,9 @@
         <!-- member index block  -->
         <div class="member-index-block col-lg-12">
             <div class="member-index-title input-group rounded">
-                            <span class="input-group-text border-0" id="search-addon">
-                                <img src="{{ asset('css/image/search.png') }}" alt="">
-                            </span>
+                <span class="input-group-text border-0" id="search-addon">
+                    <img src="{{ asset('css/image/search.png') }}" alt="">
+                </span>
                 <input type="search" class="form-control rounded member-search" placeholder="搜尋客戶姓名..."
                        aria-label="Search" aria-describedby="search-addon"/>
             </div>

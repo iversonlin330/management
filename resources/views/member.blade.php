@@ -366,14 +366,15 @@
                                     <td>{{ $store->c_date }}</td>
                                     <td>{{ $store->location }}</td>
                                     <td><a href="{{ url('stores/'.$store->id) }}">{{ $store->store_no }}</a></td>
-                                    <td class="explanation">
-                                        <div class="explanation-btn vendor-btn">
+                                    @if(Auth::user() -> role == 99)
+                                        <td class="explanation-btn vendor-btn">
                                             <form action="{{ url('stores/'.$store->id) }}" method="post">
                                                 @method('DELETE')
+                                                <input type="button" value="編輯">
                                                 <input type="submit" value="刪除">
                                             </form>
-                                        </div>
-                                    </td>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
