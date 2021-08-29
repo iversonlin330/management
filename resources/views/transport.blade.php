@@ -1,4 +1,4 @@
-<!-- @include('sidebar')
+<!-- @include('layouts.sidebar')
 出貨明細:{{ $transport->transport_no }}<br>
 <table>
     <thead>

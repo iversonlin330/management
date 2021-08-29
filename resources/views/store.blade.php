@@ -1,4 +1,4 @@
-<!-- @include('sidebar')
+<!-- @include('layouts.sidebar')
 運輸紀錄{{ $store->store_no }}<br>
 <table>
     <thead>

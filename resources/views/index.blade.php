@@ -1,4 +1,4 @@
-@include('sidebar')
+@include('layouts.sidebar')
 {{ $current_user->name }}
 會員清單
 <table>
