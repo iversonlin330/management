@@ -1,16 +1,13 @@
-<!-- @extends('layouts.main') -->
 <head>
+    <title>管理員登入</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <link rel="stylesheet" href="{{ asset('css/swap.css') }}">
 </head>
-@if(Auth::user->role==99)
-    @section('title','管理員登入')
-@endif
-
-@section('title','會員登入')
 
 <body>
     <!-- section -->
@@ -19,7 +16,6 @@
             <div class="logo-image">
                 <img src="{{ asset('css/image/login-logo.png')}}" alt="">
             </div>
-            @if(Auth::user()->role == 99)
             <!-- login block -->
             <div id="loginBlock" class="login-block">
                 <h2 class="login-title">管理員登入</h2>
@@ -37,7 +33,6 @@
                     </div>
                 </form>
             </div>
-            @endif
             <!-- member login -->
             <div class="member-login">
                 <!-- member login block -->

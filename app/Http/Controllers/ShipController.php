@@ -40,6 +40,14 @@ class ShipController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        $current_user = \Session::get('admin_user');
+        $data['user_id'] = $current_user->id;
+
+        $model = new Ship;
+        $model->fill($data);
+        $model->save();
+        return back();
     }
 
     /**
@@ -74,6 +82,8 @@ class ShipController extends Controller
     public function update(Request $request, Ship $ship)
     {
         //
+        $ship->fill($request->all())->save();
+        return back();
     }
 
     /**

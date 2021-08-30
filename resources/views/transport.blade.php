@@ -78,8 +78,8 @@
                     <!-- shipment data -->
                     @foreach($transport->ships as $ship)
                         <tr class="infro-title gold-line">
-                            <td>{{ $ship->transport_id }}</td>
                             <td>{{ $ship->tw_no }}</td>
+                            <td>{{ $ship->weight }}</td>
                             <td>{{ $ship->price_buy }}</td>
                             <td>{{ $ship->price_ship }}</td>
                             <td>{{ $ship->price_total }}</td>
@@ -107,7 +107,14 @@
                             @if(Auth::user()->role==99)
                             <td class="shipment-btn vendor-btn">
                                 <form action="{{ url('ships/'.$ship->id) }}" method="post">
-                                    <input type="button" value="編輯" data-toggle="modal" data-target="#shipmentEditModal">
+                                    <input type="button" value="編輯"
+                                           data-url="{{ url('ships/'.$ship->id) }}"
+                                           data-tw_no="{{ $ship->tw_no }}"
+                                           data-weight="{{ $ship->weight }}"
+                                           data-price_buy="{{ $ship->price_buy }}"
+                                           data-price_ship="{{ $ship->price_ship }}"
+                                           data-price_total="{{ $ship->price_total }}"
+                                           onclick="edit_modal(this)">
                                     @method('DELETE')
                                     <input type="submit" value="刪除">
                                 </form>
@@ -124,29 +131,32 @@
                                                 </button>
                                             </div>
                                             <!-- shipmen edit body -->
+                                            <form action="" method="POST">
+                                                @method("PUT")
                                             <div class="modal-body edit-body">
                                                 <span class="edit-data gold-data">
-                                                    <p>台灣國內單號</p><input type="text" placeholder="{{ $ship->transport_id }}">
+                                                    <p>台灣國內單號</p><input type="text" name="tw_no" value="{{ $ship->tw_no }}">
                                                 </span>
                                                 <span class="edit-data">
-                                                    <p>包裹總重量 <br> (台幣)</p><input type="number" placeholder="{{ $ship->tw_no }}">
+                                                    <p>包裹總重量 <br> (台幣)</p><input type="text" name="weight" value="{{ $ship->weight }}">
                                                 </span>
                                                 <span class="edit-data gold-data">
-                                                    <p>購物金額</p><input type="number" placeholder="{{ $ship->price_buy }}">
+                                                    <p>購物金額</p><input type="number" name="price_buy" value="{{ $ship->price_buy }}">
                                                 </span>
                                                 <span class="edit-data gold-data">
-                                                    <p>運費金額</p><input type="number" placeholder="{{ $ship->price_ship }}">
+                                                    <p>運費金額</p><input type="number" name="price_ship" value="{{ $ship->price_ship }}">
                                                 </span>
                                                 <span class="edit-data gold-data">
-                                                    <p>金額總計	</p><input type="number" placeholder="{{ $ship->price_total }}">
+                                                    <p>金額總計	</p><input type="number" name="price_total" value="{{ $ship->price_total }}">
                                                 </span>
                                             </div>
                                             <!-- shipmen edit submit -->
                                             <div class="modal-footer edit-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">關閉</button>
-                                                <button type="button" class="btn btn-primary">儲存變更</button>
+                                                <button type="submit" class="btn btn-primary">儲存變更</button>
                                             </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -158,4 +168,24 @@
             </table>
         </div>
     </div>
+    <script>
+        function edit_modal(obj) {
+            let url = $(obj).data('url');
+            let tw_no = $(obj).data('tw_no');
+            let weight = $(obj).data('weight');
+            let price_buy = $(obj).data('price_buy');
+            let price_ship = $(obj).data('price_ship');
+            let price_total = $(obj).data('price_total');
+
+            //$("[name='order']").val(order);
+            $("#shipmentEditModal form").attr('action', url);
+            $("#shipmentEditModal form").find("[name='tw_no']").val(tw_no);
+            $("#shipmentEditModal form").find("[name='weight']").val(weight);
+            $("#shipmentEditModal form").find("[name='price_buy']").val(price_buy);
+            $("#shipmentEditModal form").find("[name='price_ship']").val(price_ship);
+            $("#shipmentEditModal form").find("[name='price_total']").val(price_total);
+
+            $('#shipmentEditModal').modal('show');
+        }
+    </script>
 @endsection
