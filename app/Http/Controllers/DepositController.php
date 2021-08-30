@@ -99,6 +99,5 @@ class DepositController extends Controller
         Excel::import(new DepositImport, $request->file('file'));
 
         return back();
-        return redirect('/')->with('success', 'All good!');
     }
 }

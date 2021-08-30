@@ -95,6 +95,5 @@ class TransportController extends Controller
         Excel::import(new TransportImport, $request->file('file'));
 
         return back();
-        return redirect('/')->with('success', 'All good!');
     }
 }

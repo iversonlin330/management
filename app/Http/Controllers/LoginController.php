@@ -55,16 +55,8 @@ class LoginController extends Controller
             }
         } else {
             $credentials = $request->only('account', 'password');
-            if (Auth::attempt($credentials)) {
-                //return redirect('groups');
-                return back();
-            } else {
-                return back();
-            }
+            return back();
         }
-
-        return back();
-        //return redirect('groups');
     }
 
     public function logout()
