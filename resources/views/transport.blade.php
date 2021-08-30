@@ -21,7 +21,47 @@
             <div class="shipment-title">
                 <h2>運輸紀錄： <span class="shipment-num">{{ $transport->transport_no }}</span></h2>
                 @if(Auth::user()->role == 99)
-                <button class="btn shipment-add vendor-btn">新增</button>
+                <button class="btn shipment-add vendor-btn" data-toggle="modal"
+                data-target="#shipmentAddModal">新增</button>
+                <!-- shipmen add modal -->
+                <div class="modal edit-modal" id="shipmentAddModal" tabindex="-1" role="dialog"
+                        aria-labelledby="editModal" aria-hidden="true">
+                    <div class="modal-dialog edit-dialog " role="document">
+                        <div class="modal-content edit-content">
+                            <div class="modal-header edit-header">
+                                <h5 class="edit-title">新增出貨明細</h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!-- shipmen add body -->
+                            <div class="modal-body edit-body">
+                                <span class="edit-data gold-data">
+                                    <p>台灣國內單號</p><input type="text" placeholder="">
+                                </span>
+                                <span class="edit-data">
+                                    <p>包裹總重量 <br> (台幣)</p><input type="number" placeholder="">
+                                </span>
+                                <span class="edit-data gold-data">
+                                    <p>購物金額</p><input type="number" placeholder="">
+                                </span>
+                                <span class="edit-data gold-data">
+                                    <p>運費金額</p><input type="number" placeholder="">
+                                </span>
+                                <span class="edit-data gold-data">
+                                    <p>金額總計	</p><input type="number" placeholder="">
+                                </span>
+                            </div>
+                            <!-- shipmen add submit -->
+                            <div class="modal-footer edit-footer">
+                                <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">關閉</button>
+                                <button type="button" class="btn btn-primary">新增</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @endif
             </div>
             <!-- table shipment -->
@@ -65,13 +105,52 @@
                                 @endif
                             </td>
                             @if(Auth::user()->role==99)
-                                <td class="shipment-btn vendor-btn">
-                                    <form action="{{ url('ships/'.$ship->id) }}" method="post">
-                                        <input type="button" value="編輯">
-                                        @method('DELETE')
-                                        <input type="submit" value="刪除">
-                                    </form>
-                                </td>
+                            <td class="shipment-btn vendor-btn">
+                                <form action="{{ url('ships/'.$ship->id) }}" method="post">
+                                    <input type="button" value="編輯" data-toggle="modal" data-target="#shipmentEditModal">
+                                    @method('DELETE')
+                                    <input type="submit" value="刪除">
+                                </form>
+                                <!-- shipmen edit modal -->
+                                <div class="modal edit-modal" id="shipmentEditModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="editModal" aria-hidden="true">
+                                    <div class="modal-dialog edit-dialog " role="document">
+                                        <div class="modal-content edit-content">
+                                            <div class="modal-header edit-header">
+                                                <h5 class="edit-title">編輯出貨明細</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <!-- shipmen edit body -->
+                                            <div class="modal-body edit-body">
+                                                <span class="edit-data gold-data">
+                                                    <p>台灣國內單號</p><input type="text" placeholder="{{ $ship->transport_id }}">
+                                                </span>
+                                                <span class="edit-data">
+                                                    <p>包裹總重量 <br> (台幣)</p><input type="number" placeholder="{{ $ship->tw_no }}">
+                                                </span>
+                                                <span class="edit-data gold-data">
+                                                    <p>購物金額</p><input type="number" placeholder="{{ $ship->price_buy }}">
+                                                </span>
+                                                <span class="edit-data gold-data">
+                                                    <p>運費金額</p><input type="number" placeholder="{{ $ship->price_ship }}">
+                                                </span>
+                                                <span class="edit-data gold-data">
+                                                    <p>金額總計	</p><input type="number" placeholder="{{ $ship->price_total }}">
+                                                </span>
+                                            </div>
+                                            <!-- shipmen edit submit -->
+                                            <div class="modal-footer edit-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">關閉</button>
+                                                <button type="button" class="btn btn-primary">儲存變更</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                             @endif
                         </tr>
                     @endforeach

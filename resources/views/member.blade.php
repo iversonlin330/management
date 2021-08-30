@@ -167,50 +167,50 @@
                     <div class="member-title">
                         <h2>預付金儲值紀錄</h2>
                         @if(Auth::user()->role == 99)
-                            <button class="btn member-infro gold-add vendor-btn" data-toggle="modal"
-                                    data-target="#goldEditModal">新增</button>
-                        @endif
-                    </div>
-                    <!-- gold edit modal -->
-                    <div class="modal edit-modal" id="goldEditModal" tabindex="-1" role="dialog"
-                         aria-labelledby="editModal" aria-hidden="true">
-                        <div class="modal-dialog edit-dialog " role="document">
-                            <div class="modal-content edit-content">
-                                <div class="modal-header edit-header">
-                                    <h5 class="edit-title">編輯預付金紀錄</h5>
-                                    <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                        <button class="btn member-infro gold-add vendor-btn" data-toggle="modal"
+                                data-target="#goldAddModalOne">新增</button>
+                        <!-- gold add modal-1 -->
+                        <div class="modal edit-modal" id="goldAddModalOne" tabindex="-1" role="dialog"
+                            aria-labelledby="editModal" aria-hidden="true">
+                            <div class="modal-dialog edit-dialog " role="document">
+                                <div class="modal-content edit-content">
+                                    <div class="modal-header edit-header">
+                                        <h5 class="edit-title">新增預付金紀錄</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <!-- gold add body -->
+                                    <form action="{{ url('deposits') }}" method="post">
+                                        <div class="modal-body edit-body">
+                                            <span class="edit-data gold-data">
+                                                <p>儲值日期</p><input type="date" name="c_date" placeholder="">
+                                            </span>
+                                            <span class="edit-data">
+                                                <p>儲值金額 <br> (台幣)</p><input type="number" name="amount" placeholder="">
+                                            </span>
+                                            <span class="edit-data gold-data">
+                                                <p>使用匯率</p><input type="number" name="rate" placeholder="">
+                                            </span>
+                                            <span class="edit-data gold-data">
+                                                <p>日幣金額</p><input type="number" name="jpy" placeholder="">
+                                            </span>
+                                            <span class="edit-data gold-data">
+                                                <p>備註</p><input type="text" name="note" placeholder="說明文字內容">
+                                            </span>
+                                        </div>
+                                        <!-- gold edit submit -->
+                                        <div class="modal-footer edit-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">關閉</button>
+                                            <button type="submit" class="btn btn-primary">新增</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <!-- gold edit body -->
-                                <form action="{{ url('deposits') }}" method="post">
-                                    <div class="modal-body edit-body">
-                                                <span class="edit-data gold-data">
-                                                    <p>儲值日期</p><input type="date" name="c_date" placeholder="2021年月14號">
-                                                </span>
-                                        <span class="edit-data">
-                                                    <p>儲值金額 <br> (台幣)</p><input type="number" name="amount" placeholder="10,000">
-                                                </span>
-                                        <span class="edit-data gold-data">
-                                                    <p>使用匯率</p><input type="number" name="rate" placeholder="0.265">
-                                                </span>
-                                        <span class="edit-data gold-data">
-                                                    <p>日幣金額</p><input type="number" name="jpy" placeholder="37,736">
-                                                </span>
-                                        <span class="edit-data gold-data">
-                                                    <p>備註</p><input type="text" name="note" placeholder="說明文字內容">
-                                                </span>
-                                    </div>
-                                    <!-- gold edit submit -->
-                                    <div class="modal-footer edit-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">關閉</button>
-                                        <button type="submit" class="btn btn-primary">儲存變更</button>
-                                    </div>
-                                </form>
                             </div>
                         </div>
+                        @endif
                     </div>
                     <!-- table stored -->
                     <div class="stored-table first-stored-block">
@@ -237,14 +237,54 @@
                                     <td>{{ $deposit->rate }}</td>
                                     <td>{{ $deposit->jpy }}</td>
                                     <td>{{ $deposit->note }}</td>
-                                    <td class="explanation">
-                                        <div class="explanation-btn vendor-btn">
-                                            <form action="{{ url('deposits/'.$deposit->id) }}" method="post">
-                                                @method('DELETE')
-                                                <input type="submit" value="刪除">
-                                            </form>
+                                    @if(Auth::user()->role==99)
+                                    <td class="vendor-btn">
+                                        <form class="explanation-btn" action="{{ url('deposits/'.$deposit->id) }}" method="post">
+                                            <input type="button" value="編輯" data-toggle="modal" data-target="#goldEditModalOne">
+                                            @method('DELETE')
+                                            <input type="submit" value="刪除">
+                                        </form>
+                                        <!-- gold edit modal-One -->
+                                        <div class="modal edit-modal" id="goldAddModalOne" tabindex="-1" role="dialog"
+                                            aria-labelledby="editModal" aria-hidden="true">
+                                            <div class="modal-dialog edit-dialog " role="document">
+                                                <div class="modal-content edit-content">
+                                                    <div class="modal-header edit-header">
+                                                        <h5 class="edit-title">編輯預付金紀錄</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <!-- gold edit body -->
+                                                    <div class="modal-body edit-body">
+                                                        <span class="edit-data gold-data">
+                                                            <p>儲值日期</p><input type="date" placeholder="{{ $deposit->c_date }}">
+                                                        </span>
+                                                        <span class="edit-data">
+                                                            <p>儲值金額 <br> (台幣)</p><input type="number" placeholder="{{ $deposit->amount }}">
+                                                        </span>
+                                                        <span class="edit-data gold-data">
+                                                            <p>使用匯率</p><input type="number" placeholder="{{ $deposit->rate }}">
+                                                        </span>
+                                                        <span class="edit-data gold-data">
+                                                            <p>日幣金額</p><input type="number" placeholder="{{ $deposit->note }}">
+                                                        </span>
+                                                        <span class="edit-data gold-data">
+                                                            <p>備註</p><input type="text" placeholder="">
+                                                        </span>
+                                                    </div>
+                                                    <!-- gold edit submit -->
+                                                    <div class="modal-footer edit-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">關閉</button>
+                                                        <button type="button" class="btn btn-primary">儲存變更</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
+                                    @endif
                                 </tr>
                                 @php
                                     /* @var $store_price */
@@ -252,7 +292,6 @@
                                     $store_price = $store_price + $deposit->jpy;
                                 @endphp
                             @endforeach
-                            </tbody>
                             </tbody>
                         </table>
                     </div>
@@ -306,12 +345,12 @@
                     <div class="member-title">
                         <h2>入倉履歷</h2>
                         @if(Auth::user()->role == 99)
-                            <button class="btn member-infro gold-add vendor-btn" data-toggle="modal"
-                                    data-target="#goldAddModal">新增</button>
+                        <button class="btn member-infro gold-add vendor-btn" data-toggle="modal"
+                                data-target="#goldAddModalSec">新增</button>
                         @endif
                     </div>
-                    <!-- gold edit modal -->
-                    <div class="modal edit-modal" id="goldAddModal" tabindex="-1" role="dialog"
+                    <!-- gold add modal-Sec -->
+                    <div class="modal edit-modal" id="goldAddModalSec" tabindex="-1" role="dialog"
                          aria-labelledby="editModal" aria-hidden="true">
                         <div class="modal-dialog edit-dialog " role="document">
                             <div class="modal-content edit-content">
@@ -322,29 +361,23 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <!-- gold edit body -->
+                                <!-- gold add body -->
                                 <div class="modal-body edit-body">
-                                                <span class="edit-data gold-data">
-                                                    <p>儲值日期</p><input type="date" placeholder="">
-                                                </span>
+                                    <span class="edit-data gold-data">
+                                        <p>入倉日期</p><input type="date" placeholder="">
+                                    </span>
                                     <span class="edit-data">
-                                                    <p>儲值金額 <br> (台幣)</p><input type="number" placeholder="">
-                                                </span>
+                                        <p>國內運輸公司/取貨地點 <br> (台幣)</p><input type="number" placeholder="">
+                                    </span>
                                     <span class="edit-data gold-data">
-                                                    <p>使用匯率</p><input type="number" placeholder="">
-                                                </span>
-                                    <span class="edit-data gold-data">
-                                                    <p>日幣金額</p><input type="number" placeholder="">
-                                                </span>
-                                    <span class="edit-data gold-data">
-                                                    <p>備註</p><input type="text" placeholder="">
-                                                </span>
+                                        <p>日本國內運輸公司追蹤單號</p><input type="number" placeholder="">
+                                    </span>
                                 </div>
-                                <!-- gold edit submit -->
+                                <!-- gold add submit -->
                                 <div class="modal-footer edit-footer">
                                     <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">關閉</button>
-                                    <button type="button" class="btn btn-primary">儲存變更</button>
+                                    <button type="button" class="btn btn-primary">新增</button>
                                 </div>
                             </div>
                         </div>
@@ -353,30 +386,63 @@
                     <div class="stored-table thr-stored-block">
                         <table class="personal-information stored-information">
                             <tbody class="stored-body">
-                            <!-- title -->
-                            <tr class="stored-table-title infro-title gold-line stored-title">
-                                <td>入倉日期</td>
-                                <td>國內運輸公司/取貨地點</td>
-                                <td>日本國內運輸公司追蹤單號</td>
-                            </tr>
-                            <!-- body -->
-                            <!-- gold stored -->
-                            @foreach($current_user->stores as $store)
-                                <tr class="infro-title stored-title gold-line" >
-                                    <td>{{ $store->c_date }}</td>
-                                    <td>{{ $store->location }}</td>
-                                    <td><a href="{{ url('stores/'.$store->id) }}">{{ $store->store_no }}</a></td>
-                                    @if(Auth::user() -> role == 99)
-                                        <td class="explanation-btn vendor-btn">
-                                            <form action="{{ url('stores/'.$store->id) }}" method="post">
+                                <!-- title -->
+                                <tr class="stored-table-title infro-title gold-line stored-title">
+                                    <td>入倉日期</td>
+                                    <td>國內運輸公司/取貨地點</td>
+                                    <td>日本國內運輸公司追蹤單號</td>
+                                </tr>
+                                <!-- body -->
+                                <!-- gold stored -->
+                                @foreach($current_user->stores as $store)
+                                    <tr class="infro-title stored-title gold-line" >
+                                        <td>{{ $store->c_date }}</td>
+                                        <td>{{ $store->location }}</td>
+                                        <td><a href="{{ url('stores/'.$store->id) }}">{{ $store->store_no }}</a></td>
+                                        @if(Auth::user() -> role == 99)
+                                        <td class="vendor-btn">
+                                            <form class="explanation-btn" action="{{ url('stores/'.$store->id) }}" method="post">
                                                 @method('DELETE')
-                                                <input type="button" value="編輯">
+                                                <input type="button" value="編輯" data-toggle="modal" data-target="#goldEditModalSec">
                                                 <input type="submit" value="刪除">
                                             </form>
+                                            <!-- gold edit modal-Sec -->
+                                            <div class="modal edit-modal" id="goldEditModalSec" tabindex="-1" role="dialog"
+                                                aria-labelledby="editModal" aria-hidden="true">
+                                                <div class="modal-dialog edit-dialog " role="document">
+                                                    <div class="modal-content edit-content">
+                                                        <div class="modal-header edit-header">
+                                                            <h5 class="edit-title">編輯預付金紀錄</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <!-- gold edit body -->
+                                                        <div class="modal-body edit-body">
+                                                            <span class="edit-data gold-data">
+                                                                <p>入倉日期</p><input type="date" placeholder="{{ $store->c_date }}">
+                                                            </span>
+                                                            <span class="edit-data">
+                                                                <p>國內運輸公司/取貨地點 <br> (台幣)</p><input type="number" placeholder="{{ $store->location }}">
+                                                            </span>
+                                                            <span class="edit-data gold-data">
+                                                                <p>日本國內運輸公司追蹤單號</p><input type="number" placeholder="{{ $store->store_no }}">
+                                                            </span>
+                                                        </div>
+                                                        <!-- gold edit submit -->
+                                                        <div class="modal-footer edit-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">關閉</button>
+                                                            <button type="button" class="btn btn-primary">儲存變更</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
-                                    @endif
-                                </tr>
-                            @endforeach
+                                        @endif
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
