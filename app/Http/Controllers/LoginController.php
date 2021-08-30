@@ -16,7 +16,6 @@ class LoginController extends Controller
     {
         $data = $request->all();
 
-        //dd($data);
         $user = User::where('account', $data['account'])->first();
         if (!$user) {
             return back();
@@ -31,11 +30,6 @@ class LoginController extends Controller
                 $current_user = Auth::user();
                 \Session::put('admin_user', $current_user);
                 return redirect('member');
-//                if ($user->user_info) {
-//                    return redirect('groups');
-//                } else {
-//                    return redirect('teachers/create');
-//                }
             } else {
                 return back();
             }
@@ -49,12 +43,10 @@ class LoginController extends Controller
             if ($credentials) {
                 Auth::login($credentials);
                 return redirect('admin');
-                //return back();
             } else {
                 return back();
             }
         } else {
-            $credentials = $request->only('account', 'password');
             return back();
         }
     }
