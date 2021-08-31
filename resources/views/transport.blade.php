@@ -7,7 +7,7 @@
         <span class="sort-name">出貨明細</span>
     </p>
     @if(Auth::user()->role == 99)
-    <p class="vendor-mark">會員管理 / <span class="shipment-name">王喜花</span> / <span class="shipment-name">運輸紀錄</span> /
+    <p class="vendor-mark">會員管理 / <span class="shipment-name">{{ Auth::user()->name }}</span> / <span class="shipment-name">運輸紀錄</span> /
         <span class="sort-name">出貨明細</span>
     </p>
     @endif
@@ -154,7 +154,7 @@
                                                     <p>運費金額</p><input type="number" name="price_ship" value="{{ $ship->price_ship }}">
                                                 </span>
                         <span class="edit-data gold-data">
-                                                    <p>金額總計	</p><input type="number" name="price_total" value="{{ $ship->price_total }}">
+                                                    <p>金額總計	</p><input class="form-control" type="number" name="price_total" value="{{ $ship->price_total }}">
                                                 </span>
                         <input type="text" name="transport_id" value="{{ $transport->transport_no }}" hidden>
                     </div>

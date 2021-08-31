@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/swap.css') }}">
 </head>
 
 <body>
@@ -17,6 +16,7 @@
                 <img src="{{ asset('css/image/login-logo.png')}}" alt="">
             </div>
             <!-- login block -->
+            @if($is_admin)
             <div id="loginBlock" class="login-block">
                 <h2 class="login-title">管理員登入</h2>
                 <form class="login-check" action="{{ url('login') }}" method="post">
@@ -33,24 +33,27 @@
                     </div>
                 </form>
             </div>
+            @else
             <!-- member login -->
             <div class="member-login">
                 <!-- member login block -->
                 <div id="loginBlock" class="login-block">
                     <h2 class="login-title">會員登入</h2>
+                    <form class="login-check" action="{{ url('login') }}" method="post">
                     <div class="login-check">
                         <div class="login-input">
                             <img src="{{ asset('css/image/login-input-01.png')}}" alt="">
-                            <input type="text" placeholder="帳號/手機">
+                            <input type="text" name="account" placeholder="帳號/手機">
                         </div>
                         <div class="login-input">
                             <img src="{{ asset('css/image/login-input-02.png')}}" alt="">
-                            <input type="text" placeholder="密碼">
+                            <input type="text" name="password" placeholder="密碼">
                         </div>
                     </div>
                     <div class="login-admin">
                         <input type="submit" value="登入" style="border:none;"></input>
                     </div>
+                    </form>
                     <div class="password-edit">
                         <button class="btn">忘記密碼</button>
                         <button class="btn">註冊會員</button>
@@ -102,6 +105,7 @@
                     <p>系統已自動發送驗證信件至您的聯絡信箱，請至信箱點擊連結來完成資料驗證。</p>
                 </div>
             </div>
+            @endif
         </div>
     </section>
     <!-- member terms block -->

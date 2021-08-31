@@ -22,8 +22,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//User login
 Route::get('/', function () {
-    return view('login');
+    $is_admin = false;
+    return view('login', compact('is_admin'));
+});
+
+//Admin login
+Route::get('/admin-login', function () {
+    $is_admin = true;
+    return view('login', compact('is_admin'));
 });
 
 Route::get('/setMember', [IndexController::class, 'setMember']);

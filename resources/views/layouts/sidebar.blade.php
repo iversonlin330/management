@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    @endif
+    @else
     <!--/ member sidebar-card /-->
     <div id="accordion" class="sidebar-accordion member-sidebar">
         <!--sidebar-card-->
@@ -73,6 +73,7 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- form data -->
     <form action="{{ url('/stores/import') }}" method="post" enctype="multipart/form-data" hidden>
         入倉履歷匯入
