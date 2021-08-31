@@ -40,7 +40,7 @@ class ShipController extends Controller
     public function store(Request $request)
     {
         //
-        $data = $request->all();
+        $data = $request->except("_method");
         $current_user = \Session::get('admin_user');
         $data['user_id'] = $current_user->id;
 

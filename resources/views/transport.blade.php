@@ -21,8 +21,7 @@
             <div class="shipment-title">
                 <h2>運輸紀錄： <span class="shipment-num">{{ $transport->transport_no }}</span></h2>
                 @if(Auth::user()->role == 99)
-                <button class="btn shipment-add vendor-btn" data-toggle="modal"
-                data-target="#shipmentAddModal">新增</button>
+                <button class="btn shipment-add vendor-btn" onclick="create_modal()">新增</button>
                 <!-- shipmen add modal -->
                 <div class="modal edit-modal" id="shipmentAddModal" tabindex="-1" role="dialog"
                         aria-labelledby="editModal" aria-hidden="true">
@@ -118,48 +117,6 @@
                                     @method('DELETE')
                                     <input type="submit" value="刪除">
                                 </form>
-                                <!-- shipmen edit modal -->
-                                <div class="modal edit-modal" id="shipmentEditModal" tabindex="-1" role="dialog"
-                                        aria-labelledby="editModal" aria-hidden="true">
-                                    <div class="modal-dialog edit-dialog " role="document">
-                                        <div class="modal-content edit-content">
-                                            <div class="modal-header edit-header">
-                                                <h5 class="edit-title">編輯出貨明細</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <!-- shipmen edit body -->
-                                            <form action="" method="POST">
-                                                @method("PUT")
-                                            <div class="modal-body edit-body">
-                                                <span class="edit-data gold-data">
-                                                    <p>台灣國內單號</p><input type="text" name="tw_no" value="{{ $ship->tw_no }}">
-                                                </span>
-                                                <span class="edit-data">
-                                                    <p>包裹總重量 <br> (台幣)</p><input type="text" name="weight" value="{{ $ship->weight }}">
-                                                </span>
-                                                <span class="edit-data gold-data">
-                                                    <p>購物金額</p><input type="number" name="price_buy" value="{{ $ship->price_buy }}">
-                                                </span>
-                                                <span class="edit-data gold-data">
-                                                    <p>運費金額</p><input type="number" name="price_ship" value="{{ $ship->price_ship }}">
-                                                </span>
-                                                <span class="edit-data gold-data">
-                                                    <p>金額總計	</p><input type="number" name="price_total" value="{{ $ship->price_total }}">
-                                                </span>
-                                            </div>
-                                            <!-- shipmen edit submit -->
-                                            <div class="modal-footer edit-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">關閉</button>
-                                                <button type="submit" class="btn btn-primary">儲存變更</button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
                             </td>
                             @endif
                         </tr>
@@ -168,7 +125,59 @@
             </table>
         </div>
     </div>
+    <!-- shipmen edit modal -->
+    <div class="modal edit-modal" id="shipmentEditModal" tabindex="-1" role="dialog"
+         aria-labelledby="editModal" aria-hidden="true">
+        <div class="modal-dialog edit-dialog " role="document">
+            <div class="modal-content edit-content">
+                <div class="modal-header edit-header">
+                    <h5 class="edit-title" id="shipmentEditModalTitle">編輯出貨明細</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- shipmen edit body -->
+                <form action="" method="POST">
+                    @method("PUT")
+                    <div class="modal-body edit-body">
+                                                <span class="edit-data gold-data">
+                                                    <p>台灣國內單號</p><input type="text" name="tw_no" value="{{ $ship->tw_no }}">
+                                                </span>
+                        <span class="edit-data">
+                                                    <p>包裹總重量 <br> (台幣)</p><input type="text" name="weight" value="{{ $ship->weight }}">
+                                                </span>
+                        <span class="edit-data gold-data">
+                                                    <p>購物金額</p><input type="number" name="price_buy" value="{{ $ship->price_buy }}">
+                                                </span>
+                        <span class="edit-data gold-data">
+                                                    <p>運費金額</p><input type="number" name="price_ship" value="{{ $ship->price_ship }}">
+                                                </span>
+                        <span class="edit-data gold-data">
+                                                    <p>金額總計	</p><input type="number" name="price_total" value="{{ $ship->price_total }}">
+                                                </span>
+                        <input type="text" name="transport_id" value="{{ $transport->transport_no }}" hidden>
+                    </div>
+                    <!-- shipmen edit submit -->
+                    <div class="modal-footer edit-footer">
+                        <button type="button" class="btn btn-secondary"
+                                data-dismiss="modal">關閉</button>
+                        <button type="submit" class="btn btn-primary">儲存變更</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script>
+        function create_modal() {
+            $("#shipmentEditModal form").attr('action', "{{ url('ships') }}");
+            $("#shipmentEditModal form").find("input").val("");
+            $("#shipmentEditModal form").find("[name='transport_id']").val("{{ $transport->transport_no }}");
+
+            $("#shipmentEditModalTitle").text("新增出貨明細");
+            $('#shipmentEditModal').modal('show');
+        }
+
         function edit_modal(obj) {
             let url = $(obj).data('url');
             let tw_no = $(obj).data('tw_no');
@@ -184,6 +193,8 @@
             $("#shipmentEditModal form").find("[name='price_buy']").val(price_buy);
             $("#shipmentEditModal form").find("[name='price_ship']").val(price_ship);
             $("#shipmentEditModal form").find("[name='price_total']").val(price_total);
+            $("#shipmentEditModal form").find("[name='transport_id']").val("{{ $transport->transport_no }}");
+            $("#shipmentEditModalTitle").text("編輯出貨明細");
 
             $('#shipmentEditModal').modal('show');
         }
