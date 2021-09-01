@@ -319,7 +319,7 @@
         <div class="modal-dialog edit-dialog " role="document">
             <div class="modal-content edit-content">
                 <div class="modal-header edit-header">
-                    <h5 class="edit-title">編輯預付金紀錄</h5>
+                    <h5 class="edit-title" id="goldAddModalOneTitle">編輯預付金紀錄</h5>
                     <button type="button" class="close" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -349,7 +349,7 @@
                     <div class="modal-footer edit-footer">
                         <button type="button" class="btn btn-secondary"
                                 data-dismiss="modal">關閉</button>
-                        <button type="button" class="btn btn-primary">儲存變更</button>
+                        <button type="submit" class="btn btn-primary">儲存變更</button>
                     </div>
                 </form>
             </div>
@@ -361,7 +361,7 @@
         <div class="modal-dialog edit-dialog " role="document">
             <div class="modal-content edit-content">
                 <div class="modal-header edit-header">
-                    <h5 class="edit-title">編輯預付金紀錄</h5>
+                    <h5 class="edit-title" id="goldEditModalSecTitle">編輯預付金紀錄</h5>
                     <button type="button" class="close" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -385,7 +385,7 @@
                     <div class="modal-footer edit-footer">
                         <button type="button" class="btn btn-secondary"
                                 data-dismiss="modal">關閉</button>
-                        <button type="button" class="btn btn-primary">儲存變更</button>
+                        <button type="submit" class="btn btn-primary">儲存變更</button>
                     </div>
                 </form>
             </div>
@@ -423,7 +423,7 @@
             $("#goldEditModalSec form").attr('action', "{{ url('stores') }}");
             $("#goldEditModalSec form").find("input").val("");
 
-            $("#goldEditModalSecTitle").text("新增預付金紀錄");
+            $("#goldEditModalSecTitle").text("新增入倉履歷");
             $('#goldEditModalSec').modal('show');
         }
 
@@ -438,7 +438,7 @@
             $("#goldEditModalSec form").find("[name='c_date']").val(c_date);
             $("#goldEditModalSec form").find("[name='location']").val(location);
             $("#goldEditModalSec form").find("[name='store_no']").val(store_no);
-            $("#goldEditModalSecTitle").text("編輯預付金紀錄");
+            $("#goldEditModalSecTitle").text("編輯入倉履歷");
 
             $('#goldEditModalSec').modal('show');
         }

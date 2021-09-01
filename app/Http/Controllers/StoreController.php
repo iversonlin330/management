@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Imports\StoreImport;
-use App\Imports\TransportImport;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -39,6 +38,14 @@ class StoreController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->except("_method");
+        $current_user = \Session::get('admin_user');
+        $data['user_id'] = $current_user->id;
+
+        $model = new Store;
+        $model->fill($data);
+        $model->save();
+        return back();
     }
 
     /**
@@ -74,6 +81,8 @@ class StoreController extends Controller
     public function update(Request $request, Store $store)
     {
         //
+        $store->fill($request->all())->save();
+        return back();
     }
 
     /**
