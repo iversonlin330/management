@@ -40,19 +40,19 @@
                 <div id="loginBlock" class="login-block">
                     <h2 class="login-title">會員登入</h2>
                     <form class="login-check" action="{{ url('login') }}" method="post">
-                    <div class="login-check">
-                        <div class="login-input">
-                            <img src="{{ asset('css/image/login-input-01.png')}}" alt="">
-                            <input type="text" name="account" placeholder="帳號/手機">
+                        <div class="login-check">
+                            <div class="login-input">
+                                <img src="{{ asset('css/image/login-input-01.png')}}" alt="">
+                                <input type="text" name="account" placeholder="帳號/手機">
+                            </div>
+                            <div class="login-input">
+                                <img src="{{ asset('css/image/login-input-02.png')}}" alt="">
+                                <input type="text" name="password" placeholder="密碼">
+                            </div>
                         </div>
-                        <div class="login-input">
-                            <img src="{{ asset('css/image/login-input-02.png')}}" alt="">
-                            <input type="text" name="password" placeholder="密碼">
+                        <div class="login-admin">
+                            <input type="submit" value="登入" style="border:none;"></input>
                         </div>
-                    </div>
-                    <div class="login-admin">
-                        <input type="submit" value="登入" style="border:none;"></input>
-                    </div>
                     </form>
                     <div class="password-edit">
                         <button class="btn">忘記密碼</button>
