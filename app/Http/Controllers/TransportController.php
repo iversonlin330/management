@@ -40,6 +40,14 @@ class TransportController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->except("_method");
+        $current_user = \Session::get('admin_user');
+        $data['user_id'] = $current_user->id;
+
+        $model = new Transport;
+        $model->fill($data);
+        $model->save();
+        return back();
     }
 
     /**
@@ -75,6 +83,8 @@ class TransportController extends Controller
     public function update(Request $request, Transport $transport)
     {
         //
+        $transport->fill($request->all())->save();
+        return back();
     }
 
     /**
