@@ -3,11 +3,12 @@
 @section('title','出貨明細')
 
 @section('topBar')
-    <p class="member-mark">首頁 /  <span class="shipment-name">運輸紀錄</span> /
-        <span class="sort-name">出貨明細</span>
-    </p>
     @if(Auth::user()->role == 99)
     <p class="vendor-mark">會員管理 / <span class="shipment-name">{{ Auth::user()->name }}</span> / <span class="shipment-name">運輸紀錄</span> /
+        <span class="sort-name">出貨明細</span>
+    </p>
+    @else
+    <p class="member-mark">首頁 /  <span class="shipment-name">運輸紀錄</span> /
         <span class="sort-name">出貨明細</span>
     </p>
     @endif

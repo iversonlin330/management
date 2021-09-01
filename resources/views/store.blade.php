@@ -3,9 +3,10 @@
 @section('title','運輸紀錄')
 
 @section('topBar')
-<p class="member-mark">首頁</p>
-    @if(Auth::user() ->role == 99)
-    <p class="vendor-mark">會員管理 / <span class="transport-name">王喜花</span> / <span class="sort-name">運輸紀錄</span></p>
+   @if(Auth::user() ->role == 99)
+    <p class="vendor-mark">會員管理 / <span class="transport-name">{{ Auth::user()->name }}</span> / <span class="sort-name">運輸紀錄</span></p>
+    @else
+    <p class="member-mark">首頁</p>
     @endif
 @endsection
 

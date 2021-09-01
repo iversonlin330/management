@@ -3,9 +3,10 @@
 @section('title','會員管理平台')
 
 @section('topBar')
-    <p class="member-mark">首頁</p>
     @if(Auth::user() ->role == 99)
-        <p class="vendor-mark">會員管理 / <span class="sort-name">王喜花</span> </p>
+    <p class="vendor-mark">會員管理 / <span class="sort-name">{{ Auth::user()->name }}</span> </p>
+    @else
+    <p class="member-mark">首頁</p>
     @endif
 @endsection
 
@@ -182,7 +183,6 @@
                                 <td>日幣金額</td>
                                 <td>備註</td>
                             </tr>
-                            <!-- body -->
                             <!-- gold stored -->
                             <tbody>
                             @php
