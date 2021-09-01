@@ -37,7 +37,7 @@
             <!-- member login -->
             <div class="member-login">
                 <!-- member login block -->
-                <div id="loginBlock" class="login-block">
+                <div id="memberloginBlock" class="login-block">
                     <h2 class="login-title">會員登入</h2>
                     <form class="login-check" action="{{ url('login') }}" method="post">
                         <div class="login-check">
@@ -55,8 +55,8 @@
                         </div>
                     </form>
                     <div class="password-edit">
-                        <button class="btn">忘記密碼</button>
-                        <button class="btn">註冊會員</button>
+                        <button class="btn"  >忘記密碼</button>
+                        <button class="btn" onclick="register()">註冊會員</button>
                     </div>
                 </div>
                 <!-- member register block -->
@@ -96,7 +96,7 @@
                         </span>
                     </div>
                     <div class="login-admin">
-                        <button class="btn">註冊</button>
+                        <button class="btn" onclick="checkBlock()">註冊</button>
                     </div>
                 </div>
                 <!-- member check block -->
@@ -113,5 +113,29 @@
         <button class="btn"> <a href="">隱私權政策</a></button>
         <button class="btn"> <a href="">服務條款</a></button>
     </div>
+
+<script>
+
+    function register(){
+        const memberloginBlock = document.getElementById("memberloginBlock");
+        const registerBlock = document.getElementById("registerBlock");
+        const checkBlock = document.getElementById("checkBlock");
+
+        memberloginBlock.style.display="none";
+        checkBlock.style.display="none";
+        registerBlock.style.display="block";
+    }
+    function checkBlock(){
+        const memberloginBlock = document.getElementById("memberloginBlock");
+        const registerBlock = document.getElementById("registerBlock");
+        const checkBlock = document.getElementById("checkBlock");
+
+        memberloginBlock.style.display="none";
+        checkBlock.style.display="block";
+        registerBlock.style.display="none";
+    }
+
+</script>
+
 
 </body>
