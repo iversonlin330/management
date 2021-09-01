@@ -79,6 +79,8 @@ class DepositController extends Controller
     public function update(Request $request, Deposit $deposit)
     {
         //
+        $deposit->fill($request->all())->save();
+        return back();
     }
 
     /**

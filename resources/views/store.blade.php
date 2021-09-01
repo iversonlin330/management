@@ -108,6 +108,7 @@
                         <p>數量</p><input type="text" name="amount" value="">
                     </span>
                     <span class="edit-data gold-data">
+<<<<<<< HEAD
                         <p>金額小計</p><input type="text" name="price_total" value="">
                     </span>                                            
                     <span class="edit-data gold-data">
@@ -119,15 +120,29 @@
                     <span class="edit-data gold-data">
                         <p>國際貨運箱號</p><input type="text" name="box_no" value="">
                     </span>                                            
+=======
+                        <p>金額小計</p><input type="text" name="price_total" value="{{ $transport->price_total }}">
+                    </span>
+                    <span class="edit-data gold-data">
+                        <p>重量小計</p><input type="text" name="weight_total" value="{{ $transport->weight_total }}">
+                    </span>
+                    <span class="edit-data gold-data">
+                        <p>預計離倉時間</p><input type="text" name="out_date" value="{{ $transport->out_date }}">
+                    </span>
+                    <span class="edit-data gold-data">
+                        <p>國際貨運箱號</p><input type="text" name="box_no" value="{{ $transport->box_no }}">
+                    </span>
+>>>>>>> 7ff0bc5b92653c72e40f60f93a662389fdc60d7c
                     <span class="edit-data gold-data">
                         <p>國際貨運追蹤號碼</p><input type="text" name="transport_no" value="">
                     </span>
+                    <input type="text" name="store_id" value="{{ $store->store_no }}" hidden>
                 </div>
                 <!-- transport edit submit -->
                 <div class="modal-footer edit-footer">
                     <button type="button" class="btn btn-secondary"
                             data-dismiss="modal">關閉</button>
-                    <button type="button" class="btn btn-primary">儲存變更</button>
+                    <button type="submit" class="btn btn-primary">儲存變更</button>
                 </div>
             </form>
         </div>
@@ -137,7 +152,11 @@
     function create_modal() {
         $("#transportEditModal form").attr('action', "{{ url('transports') }}");
         $("#transportEditModal form").find("input").val("");
+<<<<<<< HEAD
         $("#transportEditModal form").find("[name='transport_id']").val("");
+=======
+        $("#transportEditModal form").find("[name='store_id']").val("{{ $store->store_no }}");
+>>>>>>> 7ff0bc5b92653c72e40f60f93a662389fdc60d7c
 
         $("#transportEditModalTitle").text("新增運輸紀錄");
         $('#transportEditModal').modal('show');
