@@ -16,98 +16,13 @@
         <div class="member-block member-infro-block col-lg-4">
             <div class="member-title">
                 <h2>會員基本資料</h2>
-                @if(Auth::user() ->role == 99)
+                @if(Auth::user()->role == 99)
                     <button class="btn edit-infro vendor-btn" data-toggle="modal"
                             data-target="#vendorEditModal">編輯</button>
-                @endif
+                @else
                 <button class="btn edit-infro member-btn" data-toggle="modal"
                         data-target="#memberEditModal">變更密碼</button>
-            </div>
-            <!-- ---edit modal--- -->
-            <!--/ vendor edit modal / -->
-            <div class="modal edit-modal vendor-modal" id="vendorEditModal" tabindex="-1" role="dialog"
-                    aria-labelledby="editModal" aria-hidden="true">
-                <div class="modal-dialog edit-dialog " role="document">
-                    <div class="modal-content edit-content">
-                        <div class="modal-header edit-header">
-                            <h5 class="edit-title vendor-mark">編輯會員基本基料</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <!-- vendor edit body -->
-                        <div class="modal-body edit-body vendor-modal">
-                                        <span class="edit-data">
-                                            <p>會員編號</p><span class="member-num">{{ $current_user->u_id }}</span>
-                                        </span>
-                            <span class="edit-data">
-                                            <p>真實姓名</p><input type="text" name="name" value="{{ $current_user->name }}">
-                                        </span>
-                            <span class="edit-data">
-                                            <p>出生年月日</p><input type="date" name="birthday" value="{{ $current_user->birthday }}">
-                                        </span>
-                            <span class="edit-data">
-                                            <p>聯絡地址</p><input type="text" name="address" value="{{ $current_user->address }}">
-                                        </span>
-                            <span class="edit-data">
-                                            <p>聯絡電話</p><input type="tel" name="account" value="{{ $current_user->account }}">
-                                        </span>
-                            <span class="edit-data">
-                                            <p>密碼</p><input type="password" name="password" value="{{ $current_user->password }}">
-                                        </span>
-                            <span class="edit-data">
-                                            <p>收件地址</p><input type="text" name="get_address" value="{{ $current_user->get_address }}">
-                                        </span>
-                            <span class="edit-data">
-                                            <p>收件人電話</p><input type="tel" name="get_phone" value="{{ $current_user->get_phone }}">
-                                        </span>
-                            <span class="edit-data">
-                                            <p>LINE ID</p><input type="text" name="line_id" value="{{ $current_user->line_id }}">
-                                        </span>
-                            <span class="edit-data">
-                                            <p>電子信箱</p><input type="email" name="email" value="{{ $current_user->email }}">
-                                        </span>
-                            <span class="edit-data" style="align-items: center;">
-                                            <p>性別</p>
-                                            <input type="radio" name="gender" value="{{ $current_user->gender }}">女
-                                            <input type="radio" name="gender" value="{{ $current_user->gender }}">男
-                                        </span>
-                        </div>
-                        <!-- infro edit submit -->
-                        <div class="modal-footer edit-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">儲存變更</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--/ member edit modal / -->
-            <div class="modal edit-modal member-modal" id="memberEditModal" tabindex="-1" role="dialog"
-                    aria-labelledby="editModal" aria-hidden="true">
-                <div class="modal-dialog edit-dialog " role="document">
-                    <div class="modal-content edit-content">
-                        <div class="modal-header edit-header">
-                            <h5 class="edit-title member-mark">變更密碼</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <!-- member edit body -->
-                        <div class="modal-body edit-body member-modal">
-                                        <span class="edit-data member-newpassword">
-                                            <input type="password" placeholder="新密碼">
-                                        </span>
-                            <span class="edit-data member-newpassword">
-                                            <input type="password" placeholder="二次輸入新密碼">
-                                        </span>
-                        </div>
-                        <!-- infro edit submit -->
-                        <div class="modal-footer edit-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">儲存變更</button>
-                        </div>
-                    </div>
-                </div>
+                @endif
             </div>
             <!-- ---table menber--- -->
             <table class="personal-information">
@@ -189,33 +104,34 @@
                                 $store_price = 0;
                             @endphp
                             @foreach($current_user->deposits as $deposit)
-                                <tr class="infro-title stored-title gold-line">
-                                    <td>{{ $deposit->c_date }}</td>
-                                    <td>{{ $deposit->amount }}</td>
-                                    <td>{{ $deposit->rate }}</td>
-                                    <td>{{ $deposit->jpy }}</td>
-                                    <td>{{ $deposit->note }}</td>
-                                    @if(Auth::user()->role==99)
-                                    <td class="vendor-btn">
-                                        <form class="explanation-btn" action="{{ url('deposits/'.$deposit->id) }}" method="post">
-                                            <input type="button" value="編輯"
-                                                data-url="{{ url('deposits/'.$deposit->id) }}"
-                                                data-c_date="{{ $deposit->c_date }}"
-                                                data-rate="{{ $deposit->rate }}"
-                                                data-jpy="{{ $deposit->jpy }}"
-                                                data-note="{{ $deposit->note }}"
-                                                onclick="edit_modalFirst(this)">
-                                            @method('DELETE')
-                                            <input type="submit" value="刪除">
-                                        </form>
-                                    </td>
-                                    @endif
-                                </tr>
-                                @php
-                                    /* @var $store_price */
-                                    /* @var $deposit */
-                                    $store_price = $store_price + $deposit->jpy;
-                                @endphp
+                            <tr class="infro-title stored-title gold-line">
+                                <td>{{ $deposit->c_date }}</td>
+                                <td>{{ $deposit->amount }}</td>
+                                <td>{{ $deposit->rate }}</td>
+                                <td>{{ $deposit->jpy }}</td>
+                                <td>{{ $deposit->note }}</td>
+                                @if(Auth::user()->role==99)
+                                <td class="vendor-btn">
+                                    <form class="explanation-btn" action="{{ url('deposits/'.$deposit->id) }}" method="post">
+                                        <input type="button" value="編輯"
+                                            data-url="{{ url('deposits/'.$deposit->id) }}"
+                                            data-c_date="{{ $deposit->c_date }}"
+                                            data-amount="{{ $deposit->amount }}"
+                                            data-rate="{{ $deposit->rate }}"
+                                            data-jpy="{{ $deposit->jpy }}"
+                                            data-note="{{ $deposit->note }}"
+                                            onclick="edit_modalFirst(this)">
+                                        @method('DELETE')
+                                        <input type="submit" value="刪除">
+                                    </form>
+                                </td>
+                                @endif
+                            </tr>
+                            @php
+                                /* @var $store_price */
+                                /* @var $deposit */
+                                $store_price = $store_price + $deposit->jpy;
+                            @endphp
                             @endforeach
                             </tbody>
                         </table>
@@ -286,29 +202,115 @@
                                 <!-- body -->
                                 <!-- gold stored -->
                                 @foreach($current_user->stores as $store)
-                                    <tr class="infro-title stored-title gold-line" >
-                                        <td>{{ $store->c_date }}</td>
-                                        <td>{{ $store->location }}</td>
-                                        <td><a href="{{ url('stores/'.$store->id) }}">{{ $store->store_no }}</a></td>
-                                        @if(Auth::user() -> role == 99)
-                                        <td class="vendor-btn">
-                                            <form class="explanation-btn" action="{{ url('stores/'.$store->id) }}" method="post">
-                                                <input type="button" value="編輯"
-                                                    data-url="{{ url('stores/'.$store->id) }}"
-                                                    data-c_date="{{ $store->c_date }}"
-                                                    data-location="{{ $store->location }}"
-                                                    data-store_no="{{ $store->store_no }}"
-                                                    onclick="edit_modalSec(this)">
-                                                @method('DELETE')
-                                                <input type="submit" value="刪除">
-                                            </form>
-                                        </td>
-                                        @endif
-                                    </tr>
+                                <tr class="infro-title stored-title gold-line" >
+                                    <td>{{ $store->c_date }}</td>
+                                    <td>{{ $store->location }}</td>
+                                    <td><a href="{{ url('stores/'.$store->id) }}">{{ $store->store_no }}</a></td>
+                                    @if(Auth::user() -> role == 99)
+                                    <td class="vendor-btn">
+                                        <form class="explanation-btn" action="{{ url('stores/'.$store->id) }}" method="post">
+                                            <input type="button" value="編輯"
+                                                data-url="{{ url('stores/'.$store->id) }}"
+                                                data-c_date="{{ $store->c_date }}"
+                                                data-location="{{ $store->location }}"
+                                                data-store_no="{{ $store->store_no }}"
+                                                onclick="edit_modalSec(this)">
+                                            @method('DELETE')
+                                            <input type="submit" value="刪除">
+                                        </form>
+                                    </td>
+                                    @endif
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ---edit modal--- -->
+    <!--/ vendor edit modal / -->
+    <div class="modal edit-modal vendor-modal" id="vendorEditModal" tabindex="-1" role="dialog"
+        aria-labelledby="editModal" aria-hidden="true">
+        <div class="modal-dialog edit-dialog " role="document">
+            <div class="modal-content edit-content">
+                <div class="modal-header edit-header">
+                    <h5 class="edit-title vendor-mark">編輯會員基本基料</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- vendor edit body -->
+                <div class="modal-body edit-body vendor-modal">
+                                <span class="edit-data">
+                                    <p>會員編號</p><span class="member-num">{{ $current_user->u_id }}</span>
+                                </span>
+                    <span class="edit-data">
+                                    <p>真實姓名</p><input type="text" name="name" value="{{ $current_user->name }}">
+                                </span>
+                    <span class="edit-data">
+                                    <p>出生年月日</p><input type="date" name="birthday" value="{{ $current_user->birthday }}">
+                                </span>
+                    <span class="edit-data">
+                                    <p>聯絡地址</p><input type="text" name="address" value="{{ $current_user->address }}">
+                                </span>
+                    <span class="edit-data">
+                                    <p>聯絡電話</p><input type="tel" name="account" value="{{ $current_user->account }}">
+                                </span>
+                    <span class="edit-data">
+                                    <p>密碼</p><input type="password" name="password" value="{{ $current_user->password }}">
+                                </span>
+                    <span class="edit-data">
+                                    <p>收件地址</p><input type="text" name="get_address" value="{{ $current_user->get_address }}">
+                                </span>
+                    <span class="edit-data">
+                                    <p>收件人電話</p><input type="tel" name="get_phone" value="{{ $current_user->get_phone }}">
+                                </span>
+                    <span class="edit-data">
+                                    <p>LINE ID</p><input type="text" name="line_id" value="{{ $current_user->line_id }}">
+                                </span>
+                    <span class="edit-data">
+                                    <p>電子信箱</p><input type="email" name="email" value="{{ $current_user->email }}">
+                                </span>
+                    <span class="edit-data" style="align-items: center;">
+                                    <p>性別</p>
+                                    <input type="radio" name="gender" value="{{ $current_user->gender }}">女
+                                    <input type="radio" name="gender" value="{{ $current_user->gender }}">男
+                                </span>
+                </div>
+                <!-- infro edit submit -->
+                <div class="modal-footer edit-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary">儲存變更</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ member edit modal / -->
+    <div class="modal edit-modal member-modal" id="memberEditModal" tabindex="-1" role="dialog"
+        aria-labelledby="editModal" aria-hidden="true">
+        <div class="modal-dialog edit-dialog " role="document">
+            <div class="modal-content edit-content">
+                <div class="modal-header edit-header">
+                    <h5 class="edit-title member-mark">變更密碼</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- member edit body -->
+                <div class="modal-body edit-body member-modal">
+                                <span class="edit-data member-newpassword">
+                                    <input type="password" placeholder="新密碼">
+                                </span>
+                    <span class="edit-data member-newpassword">
+                                    <input type="password" placeholder="二次輸入新密碼">
+                                </span>
+                </div>
+                <!-- infro edit submit -->
+                <div class="modal-footer edit-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary">儲存變更</button>
                 </div>
             </div>
         </div>
@@ -319,7 +321,7 @@
         <div class="modal-dialog edit-dialog " role="document">
             <div class="modal-content edit-content">
                 <div class="modal-header edit-header">
-                    <h5 class="edit-title">編輯預付金紀錄</h5>
+                    <h5 class="edit-title" id="goldEditModalOneTitle">編輯預付金紀錄</h5>
                     <button type="button" class="close" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -330,16 +332,16 @@
                     @method("PUT")
                     <div class="modal-body edit-body">
                         <span class="edit-data gold-data">
-                            <p>儲值日期</p><input type="date" name="c_date" value="{{ $deposit->c_date }}">
+                            <p>儲值日期</p><input type="date" name="c_date" value="">
                         </span>
                         <span class="edit-data">
-                            <p>儲值金額 <br> (台幣)</p><input type="number" name="amount" value="{{ $deposit->amount }}">
+                            <p>儲值金額 <br> (台幣)</p><input type="number" name="amount" value="">
                         </span>
                         <span class="edit-data gold-data">
-                            <p>使用匯率</p><input type="number" name="rate" value="{{ $deposit->rate }}">
+                            <p>使用匯率</p><input type="number" name="rate" value="">
                         </span>
                         <span class="edit-data gold-data">
-                            <p>日幣金額</p><input type="number" name="jpy" value="{{ $deposit->jpy }}">
+                            <p>日幣金額</p><input type="number" name="jpy" value="">
                         </span>
                         <span class="edit-data gold-data">
                             <p>備註</p><input type="text" name="note" value="">
@@ -361,7 +363,7 @@
         <div class="modal-dialog edit-dialog " role="document">
             <div class="modal-content edit-content">
                 <div class="modal-header edit-header">
-                    <h5 class="edit-title">編輯預付金紀錄</h5>
+                    <h5 class="edit-title" id="goldAddModalSecTitle">編輯預付金紀錄</h5>
                     <button type="button" class="close" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -372,13 +374,13 @@
                     @method("PUT")
                     <div class="modal-body edit-body">
                         <span class="edit-data gold-data">
-                            <p>入倉日期</p><input type="date" name="c_date" value="{{ $store->c_date }}">
+                            <p>入倉日期</p><input type="date" name="c_date" value="">
                         </span>
                         <span class="edit-data">
-                            <p>國內運輸公司/取貨地點 <br> (台幣)</p><input type="number" name="location" value="{{ $store->location }}">
+                            <p>國內運輸公司/取貨地點 <br> (台幣)</p><input type="number" name="location" value="">
                         </span>
                         <span class="edit-data gold-data">
-                            <p>日本國內運輸公司追蹤單號</p><input type="number" name="store_no" value="{{ $store->store_no }}">
+                            <p>日本國內運輸公司追蹤單號</p><input type="number" name="store_no" value="">
                         </span>
                     </div>
                     <!-- gold edit submit -->
@@ -404,6 +406,7 @@
         function edit_modalFirst(obj) {
             let url = $(obj).data('url');
             let c_date = $(obj).data('c_date');
+            let amount = $(obj).data('amount');
             let rate = $(obj).data('rate');
             let jpy = $(obj).data('jpy');
             let note = $(obj).data('note');
@@ -411,6 +414,7 @@
             //$("[name='order']").val(order);
             $("#goldAddModalOne form").attr('action', url);
             $("#goldAddModalOne form").find("[name='c_date']").val(c_date);
+            $("#goldAddModalOne form").find("[name='amount']").val(amount);
             $("#goldAddModalOne form").find("[name='rate']").val(rate);
             $("#goldAddModalOne form").find("[name='jpy']").val(jpy);
             $("#goldAddModalOne form").find("[name='note']").val(note);

@@ -82,7 +82,7 @@
     <div class="modal-dialog edit-dialog " role="document">
         <div class="modal-content edit-content">
             <div class="modal-header edit-header">
-                <h5 class="edit-title">編輯運輸紀錄</h5>
+                <h5 class="edit-title" id="transportEditModalTitle">編輯運輸紀錄</h5>
                 <button type="button" class="close" data-dismiss="modal"
                         aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -93,34 +93,34 @@
                 @method("PUT")
                 <div class="modal-body edit-body">
                     <span class="edit-data gold-data">
-                        <p>已入倉項目</p><input type="text" name="name" value="{{ $transport->name }}">
+                        <p>已入倉項目</p><input type="text" name="name" value="">
                     </span>
                     <span class="edit-data">
-                        <p>JAN CODE <br> (台幣)</p><input type="number" name="jan_code" value="{{ $transport->jan_code }}">
+                        <p>JAN CODE <br> (台幣)</p><input type="number" name="jan_code" value="">
                     </span>
                     <span class="edit-data gold-data">
-                        <p>單價</p><input type="number" name="price" value="{{ $transport->price }}">
+                        <p>單價</p><input type="number" name="price" value="">
                     </span>
                     <span class="edit-data gold-data">
-                        <p>重量</p><input type="number" name="weight" value="{{ $transport->weight }}">
+                        <p>重量</p><input type="number" name="weight" value="">
                     </span>
                     <span class="edit-data gold-data">
-                        <p>數量</p><input type="text" name="amount" value="{{ $transport->amount }}">
+                        <p>數量</p><input type="text" name="amount" value="">
                     </span>
                     <span class="edit-data gold-data">
-                        <p>金額小計</p><input type="text" name="price_total" value="{{ $transport->price_total }}">
+                        <p>金額小計</p><input type="text" name="price_total" value="">
                     </span>                                            
                     <span class="edit-data gold-data">
-                        <p>重量小計</p><input type="text" name="weight_total" value="{{ $transport->weight_total }}">
+                        <p>重量小計</p><input type="text" name="weight_total" value="">
                     </span>                                            
                     <span class="edit-data gold-data">
-                        <p>預計離倉時間</p><input type="text" name="out_date" value="{{ $transport->out_date }}">
+                        <p>預計離倉時間</p><input type="text" name="out_date" value="">
                     </span>                                            
                     <span class="edit-data gold-data">
-                        <p>國際貨運箱號</p><input type="text" name="box_no" value="{{ $transport->box_no }}">
+                        <p>國際貨運箱號</p><input type="text" name="box_no" value="">
                     </span>                                            
                     <span class="edit-data gold-data">
-                        <p>國際貨運追蹤號碼</p><input type="text" name="transport_no" value="{{ $transport->transport_no }}">
+                        <p>國際貨運追蹤號碼</p><input type="text" name="transport_no" value="">
                     </span>
                 </div>
                 <!-- transport edit submit -->
@@ -137,7 +137,7 @@
     function create_modal() {
         $("#transportEditModal form").attr('action', "{{ url('transports') }}");
         $("#transportEditModal form").find("input").val("");
-        $("#transportEditModal form").find("[name='transport_id']").val("{{ $transport->transport_no }}");
+        $("#transportEditModal form").find("[name='transport_id']").val("");
 
         $("#transportEditModalTitle").text("新增運輸紀錄");
         $('#transportEditModal').modal('show');

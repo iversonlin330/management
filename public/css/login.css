@@ -58,6 +58,9 @@
     width: 50%;
     border-radius: 4px;
 }
+.login-admin button {
+    color: #fff;
+}
 .login-admin input{
     background-color: unset;
     color: #fff;
@@ -84,8 +87,6 @@
     margin: 30px auto;
     border-radius: 4px;
     padding: 10px 20px;
-    height: 250px;
-    overflow: scroll;
 }
 .member-num {
     color: #868686;

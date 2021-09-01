@@ -104,21 +104,21 @@
                     @method("PUT")
                     <div class="modal-body edit-body">
                         <span class="edit-data gold-data">
-                            <p>台灣國內單號</p><input type="text" name="tw_no" value="{{ $ship->tw_no }}">
+                            <p>台灣國內單號</p><input type="text" name="tw_no" value="">
                         </span>
                         <span class="edit-data">
-                            <p>包裹總重量 <br> (台幣)</p><input type="text" name="weight" value="{{ $ship->weight }}">
+                            <p>包裹總重量 <br> (台幣)</p><input type="text" name="weight" value="">
                         </span>
                         <span class="edit-data gold-data">
-                            <p>購物金額</p><input type="number" name="price_buy" value="{{ $ship->price_buy }}">
+                            <p>購物金額</p><input type="number" name="price_buy" value="">
                         </span>
                         <span class="edit-data gold-data">
-                            <p>運費金額</p><input type="number" name="price_ship" value="{{ $ship->price_ship }}">
+                            <p>運費金額</p><input type="number" name="price_ship" value="">
                         </span>
                         <span class="edit-data gold-data">
-                            <p>金額總計	</p><input class="form-control" type="number" name="price_total" value="{{ $ship->price_total }}">
+                            <p>金額總計	</p><input class="form-control" type="number" name="price_total" value="">
                         </span>
-                        <input type="text" name="transport_id" value="{{ $transport->transport_no }}" hidden>
+                        <input type="text" name="transport_id" value="" hidden>
                     </div>
                     <!-- shipmen edit submit -->
                     <div class="modal-footer edit-footer">

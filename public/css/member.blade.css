@@ -157,7 +157,7 @@
     height: 200px;
 }
 .stored-table {
-    overflow: scroll;
+    overflow-y: scroll;
     margin: 0px 10px;
 }
 .stored-information {

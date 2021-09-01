@@ -1,5 +1,9 @@
 <head>
+    @if($is_admin)
     <title>管理員登入</title>
+    @else
+    <title>會員登入</title>
+    @endif
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
