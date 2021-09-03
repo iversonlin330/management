@@ -321,11 +321,7 @@
         <div class="modal-dialog edit-dialog " role="document">
             <div class="modal-content edit-content">
                 <div class="modal-header edit-header">
-<<<<<<< HEAD
                     <h5 class="edit-title" id="goldEditModalOneTitle">編輯預付金紀錄</h5>
-=======
-                    <h5 class="edit-title" id="goldAddModalOneTitle">編輯預付金紀錄</h5>
->>>>>>> 7ff0bc5b92653c72e40f60f93a662389fdc60d7c
                     <button type="button" class="close" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -367,11 +363,7 @@
         <div class="modal-dialog edit-dialog " role="document">
             <div class="modal-content edit-content">
                 <div class="modal-header edit-header">
-<<<<<<< HEAD
-                    <h5 class="edit-title" id="goldAddModalSecTitle">編輯預付金紀錄</h5>
-=======
                     <h5 class="edit-title" id="goldEditModalSecTitle">編輯預付金紀錄</h5>
->>>>>>> 7ff0bc5b92653c72e40f60f93a662389fdc60d7c
                     <button type="button" class="close" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -407,7 +399,7 @@
             $("#goldAddModalOne form").attr('action', "{{ url('deposits') }}");
             $("#goldAddModalOne form").find("input").val("");
 
-            $("#goldAddModalOneTitle").text("新增預付金儲值紀錄");
+            $("#goldEditModalOneTitle").text("新增預付金儲值紀錄");
             $('#goldAddModalOne').modal('show');
         }
 

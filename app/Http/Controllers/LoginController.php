@@ -17,7 +17,6 @@ class LoginController extends Controller
         $data = $request->all();
 
         $user = User::where('account', $data['account'])->first();
-        // echo "1";
         if (!$user) {
             return back();
         }
@@ -26,13 +25,12 @@ class LoginController extends Controller
             $credentials = User::where('account', $data['account'])
                 ->where('password', $data['password'])
                 ->first();
-            // echo "2";
-            if ($credentials && $credentials->email_verified_at != null) {
+            // if ($credentials && $credentials->email_verified_at != null)
+            if ($credentials) {
                 Auth::login($credentials);
                 $current_user = Auth::user();
                 \Session::put('admin_user', $current_user);
-                // echo "3";
-                 return redirect('member');
+                return redirect('member');
             } else {
                 return back();
             }
