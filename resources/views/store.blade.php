@@ -109,16 +109,16 @@
                     </span>
                     <span class="edit-data gold-data">
                         <p>金額小計</p><input type="text" name="price_total" value="">
-                    </span>                                            
+                    </span>
                     <span class="edit-data gold-data">
                         <p>重量小計</p><input type="text" name="weight_total" value="">
-                    </span>                                            
+                    </span>
                     <span class="edit-data gold-data">
                         <p>預計離倉時間</p><input type="text" name="out_date" value="">
-                    </span>                                            
+                    </span>
                     <span class="edit-data gold-data">
                         <p>國際貨運箱號</p><input type="text" name="box_no" value="">
-                    </span>                                            
+                    </span>
                     <span class="edit-data gold-data">
                         <p>國際貨運追蹤號碼</p><input type="text" name="transport_no" value="">
                     </span>
@@ -138,7 +138,7 @@
     function create_modal() {
         $("#transportEditModal form").attr('action', "{{ url('transports') }}");
         $("#transportEditModal form").find("input").val("");
-        $("#transportEditModal form").find("[name='transport_id']").val("");
+        $("#transportEditModal form").find("[name='store_id']").val("{{ $store->store_no }}");
         $("#transportEditModalTitle").text("新增運輸紀錄");
         $('#transportEditModal').modal('show');
     }
