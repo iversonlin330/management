@@ -25,8 +25,7 @@ class LoginController extends Controller
             $credentials = User::where('account', $data['account'])
                 ->where('password', $data['password'])
                 ->first();
-            // if ($credentials && $credentials->email_verified_at != null)
-            if ($credentials) {
+            if ($credentials && $credentials->email_verified_at != null) {
                 Auth::login($credentials);
                 $current_user = Auth::user();
                 \Session::put('admin_user', $current_user);
@@ -40,7 +39,7 @@ class LoginController extends Controller
             $credentials = User::where('account', $data['account'])
                 ->where('password', $data['password'])
                 ->first();
-                // dd($credentials);
+            // dd($credentials);
             if ($credentials) {
                 Auth::login($credentials);
                 return redirect('admin');
@@ -65,7 +64,7 @@ class LoginController extends Controller
         //Create token
         $token = Str::random(32);
 
-        $mail_data['url'] = url('/verify?account='.$data['account'].'&token='.$token);
+        $mail_data['url'] = url('/verify?account=' . $data['account'] . '&token=' . $token);
         //$mail_data['email'] = $mail_data['account'];
 //        Mail::to($mail_data['email'])
 //            ->send(new Register($mail_data));
@@ -84,10 +83,10 @@ class LoginController extends Controller
     public function getVerify(Request $request)
     {
         $data = $request->all();
-        $user = User::where('account',$data['account'])
-            ->where('token',$data['token'])
+        $user = User::where('account', $data['account'])
+            ->where('token', $data['token'])
             ->update(['email_verified_at' => date('Y-m-d H:i:s')]);
-        $user = User::where('account',$data['account'])->first();
+        $user = User::where('account', $data['account'])->first();
         Auth::login($user);
         \Session::put('admin_user', $user);
         return redirect('member');

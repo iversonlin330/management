@@ -64,7 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('stores', StoreController::class);
     Route::resource('transports', TransportController::class);
     Route::resource('ships', ShipController::class);
-    Route::resource('users', UserController::class);
     Route::resource('deposits', DepositController::class);
     Route::resource('attachments', AttachmentController::class);
 });
+Route::resource('users', UserController::class);

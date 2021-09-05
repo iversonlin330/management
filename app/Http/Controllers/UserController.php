@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Mail\Register;
 use App\Models\User;
-use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -87,6 +86,8 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //
+        $user->fill($request->all())->save();
+        return back();
     }
 
     /**

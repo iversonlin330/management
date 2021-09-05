@@ -99,7 +99,9 @@
                             <p>電子信箱</p><input type="email" name="email" placeholder="">
                         </span>
                         <span class="register-data">
-                            <p>性別</p><input type="text" name="gender" placeholder="">
+                            <p>性別</p>
+                            <input type="radio" name="gender" value="2">女
+                            <input type="radio" name="gender" value="1">男
                         </span>
                     </div>
                     <div class="login-admin">
