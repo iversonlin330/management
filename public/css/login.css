@@ -111,7 +111,7 @@
 }
 /* ---check block---- */
 #checkBlock {
-    display: none;
+    //display: none;
 }
 .check-block p {
     font-size: 14px;

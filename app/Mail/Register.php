@@ -36,6 +36,6 @@ class Register extends Mailable
 
 		return $this->to($data['email'])
 			->view('mails.register',compact('data'))
-			->subject('「千森系統」認證信件');
+			->subject('「」會員註冊認證信件');
     }
 }

@@ -26,17 +26,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $is_admin = false;
     return view('login', compact('is_admin'));
-});
+})->name('/');
 
 //Admin login
 Route::get('/admin-login', function () {
     $is_admin = true;
     return view('login', compact('is_admin'));
 });
-
-Route::get('/setMember', [IndexController::class, 'setMember']);
-Route::get('/admin', [IndexController::class, 'admin']);
-Route::get('/member', [IndexController::class, 'member']);
 
 Route::post('/login', [LoginController::class, 'postLogin']);
 Route::get('/logout', [LoginController::class, 'logout']);
@@ -45,23 +41,30 @@ Route::get('/register', function () {
     return view('register');
 });
 Route::post('/register', [LoginController::class, 'register']);
-Route::get('/index', [IndexController::class, 'index']);
+Route::get('/verify', [LoginController::class, 'getVerify']);
 
-Route::get('/test-import', function () {
-    return view('test');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/setMember', [IndexController::class, 'setMember']);
+    Route::get('/admin', [IndexController::class, 'admin']);
+    Route::get('/member', [IndexController::class, 'member']);
+    Route::get('/index', [IndexController::class, 'index']);
+
+    Route::get('/test-import', function () {
+        return view('test');
+    });
+
+    Route::post('/deposits/import', [DepositController::class, 'import']);
+    Route::post('/stores/import', [StoreController::class, 'import']);
+    Route::post('/transports/import', [TransportController::class, 'import']);
+    Route::post('/ships/import', [ShipController::class, 'import']);
+
+    Route::post('/test-upload', [TestController::class, 'upload']);
+    Route::post('/attachments/upload', [AttachmentController::class, 'upload']);
+
+    Route::resource('stores', StoreController::class);
+    Route::resource('transports', TransportController::class);
+    Route::resource('ships', ShipController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('deposits', DepositController::class);
+    Route::resource('attachments', AttachmentController::class);
 });
-
-Route::post('/deposits/import', [DepositController::class, 'import']);
-Route::post('/stores/import', [StoreController::class, 'import']);
-Route::post('/transports/import', [TransportController::class, 'import']);
-Route::post('/ships/import', [ShipController::class, 'import']);
-
-Route::post('/test-upload', [TestController::class, 'upload']);
-Route::post('/attachments/upload', [AttachmentController::class, 'upload']);
-
-Route::resource('stores', StoreController::class);
-Route::resource('transports', TransportController::class);
-Route::resource('ships', ShipController::class);
-Route::resource('users', UserController::class);
-Route::resource('deposits', DepositController::class);
-Route::resource('attachments', AttachmentController::class);

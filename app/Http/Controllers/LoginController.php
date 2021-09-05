@@ -89,6 +89,7 @@ class LoginController extends Controller
             ->update(['email_verified_at' => date('Y-m-d H:i:s')]);
         $user = User::where('account',$data['account'])->first();
         Auth::login($user);
-        return redirect('groups');
+        \Session::put('admin_user', $user);
+        return redirect('member');
     }
 }

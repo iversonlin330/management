@@ -41,6 +41,7 @@
             <!-- member login -->
             <div class="member-login">
                 <!-- member login block -->
+                @if (!\Session::has('create'))
                 <div id="memberloginBlock" class="login-block">
                     <h2 class="login-title">會員登入</h2>
                     <form class="login-check" action="{{ url('login') }}" method="post">
@@ -63,51 +64,56 @@
                         <button class="btn" onclick="register()">註冊會員</button>
                     </div>
                 </div>
+                @endif
                 <!-- member register block -->
+                <form action="{{ url('users') }}" method="post">
                 <div id="registerBlock" class="login-block register-block">
                     <h2 class="login-title">會員註冊</h2>
                     <!-- member edit body -->
                     <div class="modal-body register-body">
                         <span class="register-data">
-                            <p>真實姓名</p><input type="text" placeholder="" required>
+                            <p>真實姓名</p><input type="text" name="name" placeholder="" required>
                         </span>
                         <span class="register-data">
-                            <p>出生年月日</p><input type="date" placeholder="" required>
+                            <p>出生年月日</p><input type="date" name="birthday" placeholder="" required>
                         </span>
                         <span class="register-data">
-                            <p>聯絡地址</p><input type="text" placeholder="" required>
+                            <p>聯絡地址</p><input type="text" name="address" placeholder="" required>
                         </span>
                         <span class="register-data">
-                            <p>聯絡電話</p><input type="tel" placeholder="即為登入帳號" required>
+                            <p>聯絡電話</p><input type="tel" name="account" placeholder="即為登入帳號" required>
                         </span>
                         <span class="register-data">
-                            <p>密碼</p><input type="password" placeholder="" required>
+                            <p>密碼</p><input type="password" name="password" placeholder="" required>
                         </span>
                         <span class="register-data">
-                            <p>收件地址</p><input type="text" placeholder="（若與聯絡地址相同，無需填寫）">
+                            <p>收件地址</p><input type="text" name="get_address" placeholder="（若與聯絡地址相同，無需填寫）">
                         </span>
                         <span class="register-data">
-                            <p>收件人電話</p><input type="tel" placeholder="（若與聯絡地址相同，無需填寫）">
+                            <p>收件人電話</p><input type="tel" name="get_phone" placeholder="（若與聯絡地址相同，無需填寫）">
                         </span>
                         <span class="register-data">
-                            <p>LINE ID</p><input type="text" placeholder="">
+                            <p>LINE ID</p><input type="text" name="line_id" placeholder="">
                         </span>
                         <span class="register-data">
-                            <p>電子信箱</p><input type="email" placeholder="">
+                            <p>電子信箱</p><input type="email" name="email" placeholder="">
                         </span>
                         <span class="register-data">
-                            <p>性別</p><input type="text" placeholder="">
+                            <p>性別</p><input type="text" name="gender" placeholder="">
                         </span>
                     </div>
                     <div class="login-admin">
-                        <button class="btn" onclick="checkBlock()">註冊</button>
+                        <button type="submit" class="btn">註冊</button>
                     </div>
                 </div>
+                </form>
                 <!-- member check block -->
+                @if (\Session::has('create'))
                 <div id="checkBlock" class="login-block check-block">
                     <h2 class="login-title">已發送驗證信件，至您的信箱</h2>
                     <p>系統已自動發送驗證信件至您的聯絡信箱，請至信箱點擊連結來完成資料驗證。</p>
                 </div>
+                @endif
             </div>
             @endif
         </div>
@@ -123,19 +129,19 @@
     function register(){
         const memberloginBlock = document.getElementById("memberloginBlock");
         const registerBlock = document.getElementById("registerBlock");
-        const checkBlock = document.getElementById("checkBlock");
+        //const checkBlock = document.getElementById("checkBlock");
 
         memberloginBlock.style.display="none";
-        checkBlock.style.display="none";
+        //checkBlock.style.display="none";
         registerBlock.style.display="block";
     }
     function checkBlock(){
         const memberloginBlock = document.getElementById("memberloginBlock");
         const registerBlock = document.getElementById("registerBlock");
-        const checkBlock = document.getElementById("checkBlock");
+        //const checkBlock = document.getElementById("checkBlock");
 
         memberloginBlock.style.display="none";
-        checkBlock.style.display="block";
+        //checkBlock.style.display="block";
         registerBlock.style.display="none";
     }
 
