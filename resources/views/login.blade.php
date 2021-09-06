@@ -117,15 +117,15 @@
                 </div>
                 @endif
                 <!-- member forget -->
+                <form action="{{ url('forgot') }}" method="get">
                 <div id="forgetBlock" class="login-block forget-block">
                     <h2 class="login-title">忘記密碼</h2>
-                    <form action="">
-                        <input type="email"  class="form-control" placeholder="請輸入信箱">
-                    </form>
+                    <input type="email" name="email" class="form-control" placeholder="請輸入信箱">
                     <div class="login-admin">
-                        <button type="submit" class="btn" onclick="checkBlock()">送出</button>
+                        <button type="submit" class="btn">送出</button>
                     </div>
                 </div>
+                </form>
             </div>
             @endif
         </div>

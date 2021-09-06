@@ -16,9 +16,9 @@ class Forgot extends Mailable
      *
      * @return void
      */
-	
+
 	public $data;
-	 
+
     public function __construct($data)
     {
         //
@@ -33,8 +33,8 @@ class Forgot extends Mailable
     public function build()
     {
         $data = $this->data;
-		
+
 		return $this->view('mails.forgot',compact('data'))
-			->subject('「PIRLS數位閱讀學習平台」密碼重設信件');
+			->subject('登入「XXXXXX」的新密碼，請使用登入系統並進行更改');
     }
 }

@@ -44,6 +44,7 @@ Route::get('/admin-login', function () {
 
 Route::post('/login', [LoginController::class, 'postLogin']);
 Route::get('/logout', [LoginController::class, 'logout']);
+Route::post('/forgot', [LoginController::class, 'postForgot']);
 
 Route::get('/register', function () {
     return view('register');

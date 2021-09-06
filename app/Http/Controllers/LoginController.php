@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Forgot;
 use App\Mail\Register;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -90,5 +91,21 @@ class LoginController extends Controller
         Auth::login($user);
         \Session::put('admin_user', $user);
         return redirect('member');
+    }
+
+    public function postForgot(Request $request)
+    {
+        $data = $request->all();
+        $user = User::where('email', $data['email'])->first();
+        if (!$user) {
+            return back();
+        }
+        $new_password = Str::random(16);
+        User::where('email', $data['email'])->update(['password' => $new_password]);
+        $data['new_password'] = $new_password;
+        Mail::to($data['email'])
+            ->send(new Forgot($data));
+
+        return back()->with('create', true);
     }
 }
