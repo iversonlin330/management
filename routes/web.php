@@ -28,6 +28,14 @@ Route::get('/', function () {
     return view('login', compact('is_admin'));
 })->name('/');
 
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+
+Route::get('/service', function () {
+    return view('service');
+});
+
 //Admin login
 Route::get('/admin-login', function () {
     $is_admin = true;
