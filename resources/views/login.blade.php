@@ -60,7 +60,7 @@
                         </div>
                     </form>
                     <div class="password-edit">
-                        <button class="btn"  >忘記密碼</button>
+                        <button class="btn" onclick="forget()" >忘記密碼</button>
                         <button class="btn" onclick="register()">註冊會員</button>
                     </div>
                 </div>
@@ -116,6 +116,16 @@
                     <p>系統已自動發送驗證信件至您的聯絡信箱，請至信箱點擊連結來完成資料驗證。</p>
                 </div>
                 @endif
+                <!-- member forget -->
+                <div id="forgetBlock" class="login-block forget-block">
+                    <h2 class="login-title">忘記密碼</h2>
+                    <form action="">
+                        <input type="email"  class="form-control" placeholder="請輸入信箱">
+                    </form>
+                    <div class="login-admin">
+                        <button type="submit" class="btn" onclick="checkBlock()">送出</button>
+                    </div>
+                </div>
             </div>
             @endif
         </div>
@@ -125,26 +135,41 @@
         <button class="btn"> <a href="">隱私權政策</a></button>
         <button class="btn"> <a href="">服務條款</a></button>
     </div>
-
 <script>
 
     function register(){
         const memberloginBlock = document.getElementById("memberloginBlock");
         const registerBlock = document.getElementById("registerBlock");
-        //const checkBlock = document.getElementById("checkBlock");
+        const forgetBlock = document.getElementById("forgetBlock");
+        // const checkBlock = document.getElementById("checkBlock");
 
         memberloginBlock.style.display="none";
-        //checkBlock.style.display="none";
+        // checkBlock.style.display="none";
         registerBlock.style.display="block";
+        forgetBlock.style.display="none";
     }
     function checkBlock(){
         const memberloginBlock = document.getElementById("memberloginBlock");
         const registerBlock = document.getElementById("registerBlock");
-        //const checkBlock = document.getElementById("checkBlock");
+        const forgetBlock = document.getElementById("forgetBlock");
+        const checkBlock = document.getElementById("checkBlock");
+
+        checkBlock.style.display="block";
+        memberloginBlock.style.display="none";
+        forgetBlock.style.display="none";
+        registerBlock.style.display="none";
+    }
+    function forget(){
+        const memberloginBlock = document.getElementById("memberloginBlock");
+        const registerBlock = document.getElementById("registerBlock");
+        const forgetBlock = document.getElementById("forgetBlock");
+        // const checkBlock = document.getElementById("checkBlock");
 
         memberloginBlock.style.display="none";
-        //checkBlock.style.display="block";
+        // checkBlock.style.display="none";
         registerBlock.style.display="none";
+        forgetBlock.style.display="block";
+
     }
 
 </script>
