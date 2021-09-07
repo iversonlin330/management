@@ -117,23 +117,23 @@
                 </div>
                 @endif
                 <!-- member forget -->
+                <form action="{{ url('forgot') }}" method="get">
                 <div id="forgetBlock" class="login-block forget-block">
                     <h2 class="login-title">忘記密碼</h2>
-                    <form action="">
-                        <input type="email"  class="form-control" placeholder="請輸入信箱">
-                    </form>
+                    <input type="email" name="email" class="form-control" placeholder="請輸入信箱">
                     <div class="login-admin">
-                        <button type="submit" class="btn" onclick="checkBlock()">送出</button>
+                        <button type="submit" class="btn">送出</button>
                     </div>
                 </div>
+                </form>
             </div>
             @endif
         </div>
     </section>
     <!-- member terms block -->
     <div class="terms-block member-btn">
-        <button class="btn"> <a href="">隱私權政策</a></button>
-        <button class="btn"> <a href="">服務條款</a></button>
+        <button class="btn"> <a href="{{ url('privacy') }}">隱私權政策</a></button>
+        <button class="btn"> <a href="{{ url('service') }}">服務條款</a></button>
     </div>
 <script>
 

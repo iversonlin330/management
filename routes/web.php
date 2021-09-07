@@ -29,6 +29,14 @@ Route::get('/', function () {
     return view('login', compact('is_admin'));
 })->name('/');
 
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+
+Route::get('/service', function () {
+    return view('service');
+});
+
 //Admin login
 Route::get('/admin-login', function () {
     $is_admin = true;
@@ -37,6 +45,7 @@ Route::get('/admin-login', function () {
 
 Route::post('/login', [LoginController::class, 'postLogin']);
 Route::get('/logout', [LoginController::class, 'logout']);
+Route::post('/forgot', [LoginController::class, 'postForgot']);
 
 Route::get('/register', function () {
     return view('register');
