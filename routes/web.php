@@ -8,6 +8,7 @@ use App\Http\Controllers\ShipController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TransportController;
+
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
