@@ -19,4 +19,5 @@ DB_PASSWORD=
 ```
 php artisan migrate --seed
 ```
-test2
+
+abc
