@@ -8,7 +8,6 @@ use App\Http\Controllers\ShipController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TransportController;
-
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,14 +27,6 @@ Route::get('/', function () {
     $is_admin = false;
     return view('login', compact('is_admin'));
 })->name('/');
-
-Route::get('/privacy', function () {
-    return view('privacy');
-});
-
-Route::get('/service', function () {
-    return view('service');
-});
 
 //Admin login
 Route::get('/admin-login', function () {
