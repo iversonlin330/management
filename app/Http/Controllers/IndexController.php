@@ -45,6 +45,7 @@ class IndexController extends Controller
         foreach ($columns as $column) {
             $query->orWhere($column, 'LIKE', '%' . $request['search'] . '%');
         }
+        $query->where('role','!=',99);
         $users = $query->get();
 
         return view('admin', compact('users'));

@@ -117,7 +117,7 @@
                 </div>
                 @endif
                 <!-- member forget -->
-                <form action="{{ url('forgot') }}" method="get">
+                <form action="{{ url('forgot') }}" method="post">
                 <div id="forgetBlock" class="login-block forget-block">
                     <h2 class="login-title">忘記密碼</h2>
                     <input type="email" name="email" class="form-control" placeholder="請輸入信箱">
