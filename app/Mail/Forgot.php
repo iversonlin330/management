@@ -35,6 +35,6 @@ class Forgot extends Mailable
         $data = $this->data;
 
 		return $this->view('mails.forgot',compact('data'))
-			->subject('登入「XXXXXX」的新密碼，請使用登入系統並進行更改');
+			->subject('登入「 morimori 海外配送代行」的新密碼，請使用登入系統並進行更改');
     }
 }

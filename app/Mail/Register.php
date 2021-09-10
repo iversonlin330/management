@@ -36,6 +36,6 @@ class Register extends Mailable
 
 		return $this->to($data['email'])
 			->view('mails.register',compact('data'))
-			->subject('「」會員註冊認證信件');
+			->subject('「morimori 海外配送代行」會員註冊認證信件');
     }
 }
