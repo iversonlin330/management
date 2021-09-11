@@ -133,7 +133,7 @@
     <script>
         function create_modal() {
             $("#shipmentEditModal form").attr('action', "{{ url('ships') }}");
-            $("#shipmentEditModal form").find("input").val("");
+            $("#shipmentEditModal form").find("input[name!='_method']").val("");
             $("#shipmentEditModal form").find("[name='transport_id']").val("{{ $transport->transport_no }}");
 
             $("#shipmentEditModalTitle").text("新增出貨明細");

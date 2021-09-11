@@ -394,10 +394,10 @@
                             <p>入倉日期</p><input type="date" name="c_date" value="">
                         </span>
                         <span class="edit-data">
-                            <p>國內運輸公司/取貨地點 <br> (台幣)</p><input type="number" name="location" value="">
+                            <p>國內運輸公司/取貨地點 <br> (台幣)</p><input type="text" name="location" value="">
                         </span>
                         <span class="edit-data gold-data">
-                            <p>日本國內運輸公司追蹤單號</p><input type="number" name="store_no" value="">
+                            <p>日本國內運輸公司追蹤單號</p><input type="text" name="store_no" value="">
                         </span>
                     </div>
                     <!-- gold edit submit -->
@@ -415,7 +415,7 @@
         // gold edit modal-First
         function create_modalFirst() {
             $("#goldAddModalOne form").attr('action', "{{ url('deposits') }}");
-            $("#goldAddModalOne form").find("input").val("");
+            $("#goldAddModalOne form").find("input[name!='_method']").val("");
 
             $("#goldEditModalOneTitle").text("新增預付金儲值紀錄");
             $('#goldAddModalOne').modal('show');
@@ -444,7 +444,7 @@
         // gold edit modal-Sec
         function create_modalSec() {
             $("#goldEditModalSec form").attr('action', "{{ url('stores') }}");
-            $("#goldEditModalSec form").find("input").val("");
+            $("#goldEditModalSec form").find("input[name!='_method']").val("");
 
             $("#goldEditModalSecTitle").text("新增入倉履歷");
             $('#goldEditModalSec').modal('show');
@@ -455,6 +455,10 @@
             let c_date = $(obj).data('c_date');
             let location = $(obj).data('location');
             let store_no = $(obj).data('store_no');
+            console.log(url);
+            console.log(c_date);
+            console.log(location);
+            console.log(store_no);
 
             //$("[name='order']").val(order);
             $("#goldEditModalSec form").attr('action', url);

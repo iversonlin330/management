@@ -137,7 +137,7 @@
 <script>
     function create_modal() {
         $("#transportEditModal form").attr('action', "{{ url('transports') }}");
-        $("#transportEditModal form").find("input").val("");
+        $("#transportEditModal form").find("input[name!='_method']").val("");
         $("#transportEditModal form").find("[name='store_id']").val("{{ $store->store_no }}");
         $("#transportEditModalTitle").text("新增運輸紀錄");
         $('#transportEditModal').modal('show');
