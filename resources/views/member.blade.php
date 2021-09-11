@@ -47,15 +47,15 @@
                 </tr>
                 <tr class="infro-title">
                     <td>聯絡電話</td>
-                    <td>{{ $current_user->get_phone }}</td>
-                </tr>
-                <tr class="infro-title">
-                    <td>密碼</td>
                     <td>{{ $current_user->account }}</td>
                 </tr>
                 <tr class="infro-title">
+                    <td>密碼</td>
+                    <td>{{ $current_user->password }}</td>
+                </tr>
+                <tr class="infro-title">
                     <td>收件地址</td>
-                    <td>{{ $current_user->address }}</td>
+                    <td>{{ $current_user->get_address }}</td>
                 </tr>
                 <tr class="infro-title">
                     <td>收件人電話</td>
@@ -348,19 +348,19 @@
                     @method("PUT")
                     <div class="modal-body edit-body">
                         <span class="edit-data gold-data">
-                            <p>儲值日期</p><input type="date" name="c_date" value="">
+                            <p>儲值日期</p><input type="date" name="c_date" value="" required>
                         </span>
                         <span class="edit-data">
-                            <p>儲值金額 <br> (台幣)</p><input type="number" name="amount" value="">
+                            <p>儲值金額 <br> (台幣)</p><input type="number" name="amount" value="" required>
                         </span>
                         <span class="edit-data gold-data">
-                            <p>使用匯率</p><input type="number" name="rate" value="">
+                            <p>使用匯率</p><input type="number" name="rate" value="" required>
                         </span>
                         <span class="edit-data gold-data">
-                            <p>日幣金額</p><input type="number" name="jpy" value="">
+                            <p>日幣金額</p><input type="number" name="jpy" value="" required>
                         </span>
                         <span class="edit-data gold-data">
-                            <p>備註</p><input type="text" name="note" value="">
+                            <p>備註</p><input type="text" name="note" value="" required>
                         </span>
                     </div>
                     <!-- gold edit submit -->
@@ -391,13 +391,13 @@
                     @method("PUT")
                     <div class="modal-body edit-body">
                         <span class="edit-data gold-data">
-                            <p>入倉日期</p><input type="date" name="c_date" value="">
+                            <p>入倉日期</p><input type="date" name="c_date" value="" required>
                         </span>
                         <span class="edit-data">
-                            <p>國內運輸公司/取貨地點 <br> (台幣)</p><input type="text" name="location" value="">
+                            <p>國內運輸公司/取貨地點 <br> (台幣)</p><input type="text" name="location" value="" required>
                         </span>
                         <span class="edit-data gold-data">
-                            <p>日本國內運輸公司追蹤單號</p><input type="text" name="store_no" value="">
+                            <p>日本國內運輸公司追蹤單號</p><input type="text" name="store_no" value="" required>
                         </span>
                     </div>
                     <!-- gold edit submit -->
