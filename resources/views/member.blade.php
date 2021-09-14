@@ -415,7 +415,7 @@
         // gold edit modal-First
         function create_modalFirst() {
             $("#goldAddModalOne form").attr('action', "{{ url('deposits') }}");
-            $("#goldAddModalOne form").find("input[name!='_method']").val("");
+            $("#goldAddModalOne form").find("input").val("");
 
             $("#goldEditModalOneTitle").text("新增預付金儲值紀錄");
             $('#goldAddModalOne').modal('show');
@@ -436,6 +436,7 @@
             $("#goldAddModalOne form").find("[name='rate']").val(rate);
             $("#goldAddModalOne form").find("[name='jpy']").val(jpy);
             $("#goldAddModalOne form").find("[name='note']").val(note);
+            $("#goldAddModalOne form").find("[name='_method']").val("PUT");
             $("#goldAddModalOneTitle").text("編輯預付金儲值紀錄");
 
             $('#goldAddModalOne').modal('show');
@@ -444,7 +445,7 @@
         // gold edit modal-Sec
         function create_modalSec() {
             $("#goldEditModalSec form").attr('action', "{{ url('stores') }}");
-            $("#goldEditModalSec form").find("input[name!='_method']").val("");
+            $("#goldEditModalSec form").find("input").val("");
 
             $("#goldEditModalSecTitle").text("新增入倉履歷");
             $('#goldEditModalSec').modal('show');
@@ -465,6 +466,7 @@
             $("#goldEditModalSec form").find("[name='c_date']").val(c_date);
             $("#goldEditModalSec form").find("[name='location']").val(location);
             $("#goldEditModalSec form").find("[name='store_no']").val(store_no);
+            $("#goldEditModalSec form").find("[name='_method']").val("PUT");
             $("#goldEditModalSecTitle").text("編輯入倉履歷");
 
             $('#goldEditModalSec').modal('show');

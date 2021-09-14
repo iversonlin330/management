@@ -137,7 +137,7 @@
 <script>
     function create_modal() {
         $("#transportEditModal form").attr('action', "{{ url('transports') }}");
-        $("#transportEditModal form").find("input[name!='_method']").val("");
+        $("#transportEditModal form").find("input").val("");
         $("#transportEditModal form").find("[name='store_id']").val("{{ $store->store_no }}");
         $("#transportEditModalTitle").text("新增運輸紀錄");
         $('#transportEditModal').modal('show');
@@ -168,7 +168,7 @@
         $("#transportEditModal form").find("[name='out_date']").val(out_date);
         $("#transportEditModal form").find("[name='box_no']").val(box_no);
         $("#transportEditModal form").find("[name='transport_no']").val(transport_no);
-
+        $("#transportEditModal form").find("[name='_method']").val("PUT");
         $("#transportEditModalTitle").text("編輯運輸明細");
 
         $('#transportEditModal').modal('show');
