@@ -42,6 +42,11 @@ class UserController extends Controller
         $data['role'] = 1;
         $data['token'] = Str::random(32);
 
+        $exist_user = User::where('account', $data['account'])->first();
+        if ($exist_user) {
+            return "帳號重複，請回上頁重新註冊";
+        }
+
         $model = new User;
         $model->fill($data);
         $model->save();
