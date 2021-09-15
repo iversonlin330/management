@@ -416,7 +416,6 @@
         function create_modalFirst() {
             $("#goldAddModalOne form").attr('action', "{{ url('deposits') }}");
             $("#goldAddModalOne form").find("input[name!='_method']").val("");
-
             $("#goldEditModalOneTitle").text("新增預付金儲值紀錄");
             $('#goldAddModalOne').modal('show');
         }
