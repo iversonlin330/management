@@ -133,9 +133,8 @@
     <script>
         function create_modal() {
             $("#shipmentEditModal form").attr('action', "{{ url('ships') }}");
-            $("#shipmentEditModal form").find("input[name!='_method']").val("");
+            $("#shipmentEditModal form").find("input").val("");
             $("#shipmentEditModal form").find("[name='transport_id']").val("{{ $transport->transport_no }}");
-
             $("#shipmentEditModalTitle").text("新增出貨明細");
             $('#shipmentEditModal').modal('show');
         }
@@ -156,6 +155,7 @@
             $("#shipmentEditModal form").find("[name='price_ship']").val(price_ship);
             $("#shipmentEditModal form").find("[name='price_total']").val(price_total);
             $("#shipmentEditModal form").find("[name='transport_id']").val("{{ $transport->transport_no }}");
+            $("#shipmentEditModal form").find("[name='_method']").val("PUT");
             $("#shipmentEditModalTitle").text("編輯出貨明細");
 
             $('#shipmentEditModal').modal('show');
