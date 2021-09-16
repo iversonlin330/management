@@ -104,19 +104,19 @@
                     @method("PUT")
                     <div class="modal-body edit-body">
                         <span class="edit-data gold-data">
-                            <p>台灣國內單號</p><input type="text" name="tw_no" value="">
+                            <p>台灣國內單號</p><input type="text" name="tw_no" value="" required>
                         </span>
                         <span class="edit-data">
-                            <p>包裹總重量 <br> (台幣)</p><input type="text" name="weight" value="">
+                            <p>包裹總重量 <br> (台幣)</p><input type="text" name="weight" value="" required>
                         </span>
                         <span class="edit-data gold-data">
-                            <p>購物金額</p><input type="number" name="price_buy" value="">
+                            <p>購物金額</p><input type="number" name="price_buy" value="" required>
                         </span>
                         <span class="edit-data gold-data">
-                            <p>運費金額</p><input type="number" name="price_ship" value="">
+                            <p>運費金額</p><input type="number" name="price_ship" value="" required>
                         </span>
                         <span class="edit-data gold-data">
-                            <p>金額總計	</p><input class="form-control" type="number" name="price_total" value="">
+                            <p>金額總計	</p><input class="form-control" type="number" name="price_total" value="" required>
                         </span>
                         <input type="text" name="transport_id" value="" hidden>
                     </div>
