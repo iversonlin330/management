@@ -93,34 +93,34 @@
                 @method("PUT")
                 <div class="modal-body edit-body">
                     <span class="edit-data gold-data">
-                        <p>已入倉項目</p><input type="text" name="name" value="">
+                        <p>已入倉項目</p><input type="text" name="name" value="" required>
                     </span>
                     <span class="edit-data">
-                        <p>JAN CODE <br> (台幣)</p><input type="number" name="jan_code" value="">
+                        <p>JAN CODE <br> (台幣)</p><input type="number" name="jan_code" value="" required>
                     </span>
                     <span class="edit-data gold-data">
-                        <p>單價</p><input type="number" name="price" value="">
+                        <p>單價</p><input type="number" name="price" value="" required>
                     </span>
                     <span class="edit-data gold-data">
-                        <p>重量</p><input type="number" name="weight" value="">
+                        <p>重量</p><input type="number" name="weight" value="" required>
                     </span>
                     <span class="edit-data gold-data">
-                        <p>數量</p><input type="text" name="amount" value="">
+                        <p>數量</p><input type="text" name="amount" value="" required>
                     </span>
                     <span class="edit-data gold-data">
-                        <p>金額小計</p><input type="text" name="price_total" value="">
+                        <p>金額小計</p><input type="text" name="price_total" value="" required>
                     </span>
                     <span class="edit-data gold-data">
-                        <p>重量小計</p><input type="text" name="weight_total" value="">
+                        <p>重量小計</p><input type="text" name="weight_total" value="" required>
                     </span>
                     <span class="edit-data gold-data">
-                        <p>預計離倉時間</p><input type="text" name="out_date" value="">
+                        <p>預計離倉時間</p><input type="text" name="out_date" value="" required>
                     </span>
                     <span class="edit-data gold-data">
-                        <p>國際貨運箱號</p><input type="text" name="box_no" value="">
+                        <p>國際貨運箱號</p><input type="text" name="box_no" value="" required>
                     </span>
                     <span class="edit-data gold-data">
-                        <p>國際貨運追蹤號碼</p><input type="text" name="transport_no" value="">
+                        <p>國際貨運追蹤號碼</p><input type="text" name="transport_no" value="" required>
                     </span>
                     <input type="text" name="store_id" value="{{ $store->store_no }}" hidden>
                 </div>
