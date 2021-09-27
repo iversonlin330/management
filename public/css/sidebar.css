@@ -78,6 +78,9 @@ a{
     padding: 15px 0px;
     cursor: pointer;
 }
+.sidebar-list a:hover {
+    text-decoration: none;
+}
 
 /* signout */
 .signout {
