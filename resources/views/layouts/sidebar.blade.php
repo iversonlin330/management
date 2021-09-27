@@ -65,9 +65,9 @@
                     data-parent="#accordion">
                 <div class="card-body">
                     <ul class="sidebar-list">
-                        <li>個人基本資料</li>
-                        <li>預付金紀錄</li>
-                        <li>入倉履歷</li>
+                        <a href="{{ url('member')}}"><li>個人基本資料</li></a>
+                        <a href="{{ url('/member/#GoldRecord') }}"><li>預付金紀錄</li></a>
+                        <a href="{{ url('/member/#StoreRecord') }}"><li>入倉履歷</li></a>
                     </ul>
                 </div>
             </div>

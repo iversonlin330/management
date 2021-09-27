@@ -79,7 +79,7 @@
         <!-- Gold block -->
         <div class="gold-block col">
             <!-- Gold block-1 -->
-            <div class="gold-flow col">
+            <div id="#GoldRecord" class="gold-flow col">
                 <!-- gold stored -->
                 <div class="member-block">
                     <div class="member-title">
@@ -184,7 +184,7 @@
                 </div>
             </div>
             <!-- Gold block-3 -->
-            <div class="gold-flow col">
+            <div id="#StoreRecord" class="gold-flow col">
                 <!-- gold stored -->
                 <div class="member-block">
                     <div class="member-title">
