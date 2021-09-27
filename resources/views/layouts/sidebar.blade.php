@@ -92,4 +92,8 @@
         <input id="ship_input" type="file" name="file">
         <input type="submit">
     </form>
+
+    <div class="signout">
+         <input type="submit" value="登出" ></input>
+    </div>
 </div>
