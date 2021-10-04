@@ -88,7 +88,7 @@ class AttachmentController extends Controller
 
     public function upload(Request $request)
     {
-        $path = $request->file('file')->store('public');
+        $path = $request->file('file')->store('file');
 
         $file_name = $request->file('file')->getClientOriginalName();
 

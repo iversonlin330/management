@@ -94,6 +94,6 @@
     </form>
 
     <div class="signout">
-         <input type="submit" value="登出" ></input>
+         <a href="{{ url('logout') }}">登出</a>
     </div>
 </div>
