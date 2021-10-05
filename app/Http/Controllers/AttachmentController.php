@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attachment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AttachmentController extends Controller
 {
@@ -88,7 +89,8 @@ class AttachmentController extends Controller
 
     public function upload(Request $request)
     {
-        $path = $request->file('file')->store('file');
+        //$path = $request->file('file')->store('public');
+        $path = Storage::put('', $request->file('file'));
 
         $file_name = $request->file('file')->getClientOriginalName();
 
