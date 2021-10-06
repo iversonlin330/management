@@ -12,7 +12,7 @@
         <!-- member index block  -->
         <div class="member-index-block col-lg-12">
             <div class="member-index-title input-group rounded">
-                <form action="{{ url('admin') }}">
+                <form action="{{ url('admin') }}" class="d-flex">
                 <span class="input-group-text border-0" id="search-addon">
                     <img src="{{ asset('css/image/search.png') }}" alt="">
                 </span>
