@@ -1,7 +1,7 @@
 
 <div class="sidebar col-lg-2">
     <div class="sidebar-logo">
-        <img src="{{ asset('css/image/login-logo.png') }}" alt="">
+        <a href="{{ url('member')}}"><img src="{{ asset('css/image/login-logo.png') }}" alt=""></a>
     </div>
     @if(Auth::user()->role == 99)
     <!--/ vendor sidebar-card /-->

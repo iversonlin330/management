@@ -4,13 +4,10 @@
 
 @section('topBar')
     @if(Auth::user()->role == 99)
-    <p class="vendor-mark">會員管理 / <span class="shipment-name">{{ Auth::user()->name }}</span> / <span class="shipment-name">運輸紀錄</span> /
-        <span class="sort-name">出貨明細</span>
-    </p>
+    <a href="{{ url('admin')}}"><span class="previouspage">會員管理 / </span></a><a href="{{ url('member')}}"><span class="previouspage">{{ Auth::user()->name }} / </span></a><a href="javascript:history.back()"><span class="previouspage">運輸紀錄 / </span></a>
+    <span class="sort-name">出貨明細</span>
     @else
-    <p class="member-mark">首頁 /  <span class="shipment-name">運輸紀錄</span> /
-        <span class="sort-name">出貨明細</span>
-    </p>
+    <a href="{{ url('member')}}"><span class="previouspage">首頁 / </span></a><a href="javascript:history.back()"><span class="previouspage">運輸紀錄 / </span></a><span class="sort-name">出貨明細</span>
     @endif
 @endsection
 

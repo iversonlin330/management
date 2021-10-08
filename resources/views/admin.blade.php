@@ -3,7 +3,7 @@
 @section('title','會員管理')
 
 @section('topBar')
-    <p>會員管理</p>
+    <a href="{{ url('admin')}}"><span class="previouspage">會員管理</span></a>
 @endsection
 
 @section('content')

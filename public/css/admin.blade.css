@@ -22,7 +22,10 @@
     margin-bottom: 25px;
     border-radius: 5px;
 }
-.member-index-sort p {
+.member-index-sort a {
+    text-decoration: none;
+}
+.member-index-sort .previouspage {
     font-size: 16px;
     color: #6C757D;
     margin-bottom: 0;
