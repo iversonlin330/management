@@ -93,7 +93,7 @@ a{
     color: #A4A6B3;
     font-size: 16px;
 }
-.signout input {
+.signout a {
     font-size: 14px;
     color: #A4A6B3;
     background-color: unset;
