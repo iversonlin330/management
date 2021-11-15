@@ -81,7 +81,7 @@
                             <p>聯絡地址</p><input type="text" name="address" placeholder="" required>
                         </span>
                         <span class="register-data">
-                            <p>聯絡電話</p><input type="tel" name="account" placeholder="即為登入帳號" required>
+                            <p>聯絡電話</p><input type="tel" name="account" placeholder="請輸入「EZ WAY易利委」所使用之手機號碼" required>
                         </span>
                         <span class="register-data">
                             <p>密碼</p><input type="password" name="password" placeholder="" required>

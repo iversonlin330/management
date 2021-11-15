@@ -354,7 +354,7 @@
                             <p>儲值金額 <br> (台幣)</p><input type="number" name="amount" value="" required>
                         </span>
                         <span class="edit-data gold-data">
-                            <p>使用匯率</p><input type="number" name="rate" value="" required>
+                            <p>使用匯率</p><input type="number" name="rate" value="" min=0 step=0.001 required>
                         </span>
                         <span class="edit-data gold-data">
                             <p>日幣金額</p><input type="number" name="jpy" value="" required>

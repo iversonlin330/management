@@ -17,7 +17,7 @@ class CreateDepositsTable extends Migration
             $table->id();
             $table->date("c_date");
             $table->integer("amount");
-            $table->float("rate");
+            $table->decimal("rate", 8, 3);
             $table->integer("jpy");
             $table->text("note");
             $table->integer("user_id");
