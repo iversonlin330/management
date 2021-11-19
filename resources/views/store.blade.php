@@ -98,20 +98,20 @@
                     <span class="edit-data">
                         <p>JAN CODE</p><input type="number" name="jan_code" value="" required>
                     </span>
-                    <span class="edit-data gold-data">
-                        <p>單價</p><input type="number" name="price" value="" required>
+                    <span class="edit-data gold-data unit-input">
+                        <p>單價</p><input type="tel" name="price" value="" placeholder="¥" required>
                     </span>
-                    <span class="edit-data gold-data">
-                        <p>重量</p><input type="number" name="weight" value="" required>
+                    <span class="edit-data gold-data unit-input">
+                        <p>重量</p><input type="tel" name="weight" value="" placeholder="公斤" required>
                     </span>
-                    <span class="edit-data gold-data">
-                        <p>數量</p><input type="text" name="amount" value="" required>
+                    <span class="edit-data gold-data unit-input">
+                        <p>數量</p><input type="text" name="amount" value="" placeholder="公斤" required>
                     </span>
-                    <span class="edit-data gold-data">
-                        <p>金額小計</p><input type="text" name="price_total" value="" required>
+                    <span class="edit-data gold-data unit-input">
+                        <p>金額小計</p><input type="text" name="price_total" value="" placeholder="¥" required>
                     </span>
-                    <span class="edit-data gold-data">
-                        <p>重量小計</p><input type="text" name="weight_total" value="" required>
+                    <span class="edit-data gold-data unit-input">
+                        <p>重量小計</p><input type="text" name="weight_total" value="" placeholder="公斤" required>
                     </span>
                     <span class="edit-data gold-data">
                         <p>預計離倉時間</p><input type="text" name="out_date" value="" required>

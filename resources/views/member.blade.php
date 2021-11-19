@@ -122,7 +122,7 @@
                                                        data-c_date="{{ $deposit->c_date }}"
                                                        data-amount="{{ $deposit->amount }}"
                                                        data-rate="{{ $deposit->rate }}"
-                                                       data-jpy="{{ $deposit->jpy }}"
+                                                       data-jpy="{{ $deposit->jpy }}" 
                                                        data-note="{{ $deposit->note }}"
                                                        onclick="edit_modalFirst(this)">
                                                 @method('DELETE')
@@ -201,7 +201,7 @@
                             <tr class="stored-table-title infro-title gold-line stored-title">
                                 <td>入倉日期</td>
                                 <td>國內運輸公司/取貨地點</td>
-                                <td>日本國內運輸公司追蹤單號</td>
+                                <td>日本國內運輸公司<br>追蹤單號</td>
                             </tr>
                             <!-- body -->
                             <!-- gold stored -->
@@ -356,8 +356,8 @@
                         <span class="edit-data gold-data">
                             <p>使用匯率</p><input type="number" name="rate" value="" min=0 step=0.001 required>
                         </span>
-                        <span class="edit-data gold-data">
-                            <p>日幣金額</p><input type="number" name="jpy" value="" required>
+                        <span class="edit-data gold-data unit-input">
+                            <p>日幣金額</p><input type="tel" name="jpy" value=""  placeholder="¥" required>
                         </span>
                         <span class="edit-data gold-data">
                             <p>備註</p><input type="text" name="note" value="" required>
@@ -397,7 +397,7 @@
                             <p>國內運輸公司/取貨地點</p><input type="text" name="location" value="" required>
                         </span>
                         <span class="edit-data gold-data">
-                            <p>日本國內運輸公司追蹤單號</p><input type="text" name="store_no" value="" required>
+                            <p>日本國內運輸公司<br>追蹤單號</p><input type="text" name="store_no" value="" required>
                         </span>
                     </div>
                     <!-- gold edit submit -->
