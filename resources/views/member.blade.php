@@ -394,7 +394,7 @@
                             <p>入倉日期</p><input type="date" name="c_date" value="" required>
                         </span>
                         <span class="edit-data">
-                            <p>國內運輸公司/取貨地點 <br> (台幣)</p><input type="text" name="location" value="" required>
+                            <p>國內運輸公司/取貨地點</p><input type="text" name="location" value="" required>
                         </span>
                         <span class="edit-data gold-data">
                             <p>日本國內運輸公司追蹤單號</p><input type="text" name="store_no" value="" required>

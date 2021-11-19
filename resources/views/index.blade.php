@@ -66,7 +66,7 @@ Deposit預付金<br>
             <td>{{ $deposit->c_date }}</td>
             <td>{{ $deposit->amount }}</td>
             <td>{{ $deposit->rate }}</td>
-            <td>{{ $deposit->jpy }}</td>
+            <td>{{ $deposit->jpy }} ¥</td>
             <td>{{ $deposit->note }}</td>
             <td>
                 <form action="{{ url('deposits/'.$deposit->id) }}" method="post">

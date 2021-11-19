@@ -96,7 +96,7 @@
                         <p>已入倉項目</p><input type="text" name="name" value="" required>
                     </span>
                     <span class="edit-data">
-                        <p>JAN CODE <br> (台幣)</p><input type="number" name="jan_code" value="" required>
+                        <p>JAN CODE</p><input type="number" name="jan_code" value="" required>
                     </span>
                     <span class="edit-data gold-data">
                         <p>單價</p><input type="number" name="price" value="" required>

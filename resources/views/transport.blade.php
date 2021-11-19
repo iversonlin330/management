@@ -104,7 +104,7 @@
                             <p>台灣國內單號</p><input type="text" name="tw_no" value="" required>
                         </span>
                         <span class="edit-data">
-                            <p>包裹總重量 <br> (台幣)</p><input type="text" name="weight" value="" required>
+                            <p>包裹總重量</p><input type="text" name="weight" value="" required>
                         </span>
                         <span class="edit-data gold-data">
                             <p>購物金額</p><input type="number" name="price_buy" value="" required>
