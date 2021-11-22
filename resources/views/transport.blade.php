@@ -103,17 +103,17 @@
                         <span class="edit-data gold-data">
                             <p>台灣國內單號</p><input type="text" name="tw_no" value="" required>
                         </span>
-                        <span class="edit-data">
-                            <p>包裹總重量</p><input type="text" name="weight" value="" required>
+                        <span class="edit-data unit-input">
+                            <p>包裹總重量</p><input type="text" name="weight" value="" placeholder="公斤" required>
                         </span>
-                        <span class="edit-data gold-data">
-                            <p>購物金額</p><input type="number" name="price_buy" value="" required>
+                        <span class="edit-data gold-data unit-input">
+                            <p>購物金額</p><input type="tel" name="price_buy" value="" placeholder="台幣" required>
                         </span>
-                        <span class="edit-data gold-data">
-                            <p>運費金額</p><input type="number" name="price_ship" value="" required>
+                        <span class="edit-data gold-data unit-input">
+                            <p>運費金額</p><input type="tel" name="price_ship" value="" placeholder="台幣" required>
                         </span>
-                        <span class="edit-data gold-data">
-                            <p>金額總計	</p><input class="form-control" type="number" name="price_total" value="" required>
+                        <span class="edit-data gold-data unit-input">
+                            <p>金額總計	</p><input class="form-control" type="tel" name="price_total" value="" placeholder="台幣" required>
                         </span>
                         <input type="text" name="transport_id" value="" hidden>
                     </div>

@@ -115,10 +115,14 @@
     display: flex;
     margin-bottom: 2px;
 }
-.edit-body input {
+.edit-body input,.form-control {
     border: 1px solid #59ACE8;
     background-color: #F4F4F4;
     width: 100%;
+}
+.form-control {
+    border-radius: unset;
+    padding: unset;
 }
 /* member edit modal */
 .member-modal {
