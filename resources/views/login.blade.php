@@ -72,35 +72,35 @@
                     <!-- member edit body -->
                     <div class="modal-body register-body">
                         <span class="register-data">
-                            <p>真實姓名</p><input type="text" name="name" placeholder="" required>
+                            <p>真實姓名*</p><input type="text" name="name" placeholder="" required>
                         </span>
                         <span class="register-data">
-                            <p>出生年月日</p><input type="date" name="birthday" placeholder="" required>
+                            <p>出生年月日*</p><input type="date" name="birthday" placeholder="" required>
                         </span>
                         <span class="register-data">
-                            <p>聯絡地址</p><input type="text" name="address" placeholder="" required>
+                            <p>聯絡地址*</p><input type="text" name="address" placeholder="" required>
                         </span>
                         <span class="register-data">
-                            <p>聯絡電話</p><input type="tel" name="account" placeholder="請輸入「EZ WAY易利委」所使用之手機號碼" required>
+                            <p>聯絡電話*</p><input type="tel" name="account" placeholder="請輸入「EZ WAY易利委」所使用之手機號碼" required>
                         </span>
                         <span class="register-data">
-                            <p>密碼</p><input type="password" name="password" placeholder="" required>
+                            <p>密碼*</p><input type="password" name="password" placeholder="" required>
                         </span>
                         <span class="register-data">
                             <p>收件地址</p><input type="text" name="get_address" placeholder="（若與聯絡地址相同，無需填寫）">
                         </span>
                         <span class="register-data">
-                            <p>收件人電話</p><input type="tel" name="get_phone" placeholder="（若與聯絡地址相同，無需填寫）">
+                            <p>收件人電話*</p><input type="tel" name="get_phone" placeholder="（若與聯絡地址相同，無需填寫）" required>
                         </span>
                         <span class="register-data">
-                            <p>LINE ID</p><input type="text" name="line_id" placeholder="">
+                            <p>LINE ID*</p><input type="text" name="line_id" placeholder="" required>
                         </span>
                         <span class="register-data">
-                            <p>電子信箱</p><input type="email" name="email" placeholder="">
+                            <p>電子信箱*</p><input type="email" name="email" placeholder="" required>
                         </span>
                         <span class="register-data">
-                            <p>性別</p>
-                            <input type="radio" name="gender" value="2">女
+                            <p>性別*</p>
+                            <input type="radio" name="gender" value="2" required>女
                             <input type="radio" name="gender" value="1">男
                         </span>
                     </div>
