@@ -105,7 +105,7 @@
                         <p>重量</p><input type="tel" name="weight" value="" placeholder="公斤" required>
                     </span>
                     <span class="edit-data gold-data unit-input">
-                        <p>數量</p><input type="text" name="amount" value="" placeholder="公斤" required>
+                        <p>數量</p><input type="text" name="amount" value="" required>
                     </span>
                     <span class="edit-data gold-data unit-input">
                         <p>金額小計</p><input type="text" name="price_total" value="" placeholder="¥" required>
