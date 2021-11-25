@@ -122,7 +122,7 @@
                                                        data-c_date="{{ $deposit->c_date }}"
                                                        data-amount="{{ $deposit->amount }}"
                                                        data-rate="{{ $deposit->rate }}"
-                                                       data-jpy="{{ $deposit->jpy }}" 
+                                                       data-jpy="{{ $deposit->jpy }}"
                                                        data-note="{{ $deposit->note }}"
                                                        onclick="edit_modalFirst(this)">
                                                 @method('DELETE')
@@ -354,7 +354,7 @@
                             <p>儲值金額 <br> (台幣)</p><input type="number" name="amount" value="" required>
                         </span>
                         <span class="edit-data gold-data">
-                            <p>使用匯率</p><input type="number" name="rate" value="" min=0 step=0.001 required>
+                            <p>使用匯率</p><input type="number" name="rate" value="" min=0 step=0.001 onchange="$(this).val(parseFloat($(this).val()).toFixed(2))" required>
                         </span>
                         <span class="edit-data gold-data unit-input">
                             <p>日幣金額</p><input type="tel" name="jpy" value=""  placeholder="¥" required>
