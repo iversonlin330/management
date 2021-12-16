@@ -4,9 +4,10 @@ namespace App\Imports;
 
 use App\Models\Transport;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class TransportImport implements ToModel, WithStartRow
+class TransportImport implements ToModel, WithStartRow, WithCalculatedFormulas
 {
     /**
      * @param array $row
