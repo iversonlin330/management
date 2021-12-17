@@ -27,10 +27,10 @@
                 <tbody class="infro-body">
                     <tr class="infro-title gold-line shipment-header">
                         <td>台灣國內單號</td>
-                        <td>包裹總重量</td>
-                        <td>購物金額</td>
-                        <td>運費金額</td>
-                        <td>金額總計</td>
+                        <td>包裹總重量(kg)</td>
+                        <td>購物金額(NTD)</td>
+                        <td>運費金額(NTD)</td>
+                        <td>金額總計(NTD)</td>
                         <td>附件查詢</td>
                     </tr>
                     <!-- shipment data -->
@@ -68,7 +68,7 @@
                                     <input type="button" value="編輯"
                                            data-url="{{ url('ships/'.$ship->id) }}"
                                            data-tw_no="{{ $ship->tw_no }}"
-                                           data-weight="{{ $ship->weight }}"
+                                           data-weight="{{ $ship->weight  }}"
                                            data-price_buy="{{ $ship->price_buy }}"
                                            data-price_ship="{{ $ship->price_ship }}"
                                            data-price_total="{{ $ship->price_total }}"

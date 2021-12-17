@@ -27,11 +27,11 @@
                 <tr class="stored-title infro-title gold-line transport-header">
                     <td>已入倉項目</td>
                     <td>JAN CODE</td>
-                    <td>單價</td>
-                    <td>重量</td>
+                    <td>單價(¥)</td>
+                    <td>重量(kg)</td>
                     <td>數量</td>
-                    <td>金額小計</td>
-                    <td>重量小計</td>
+                    <td>金額小計(¥)</td>
+                    <td>重量小計(kg)</td>
                     <td>預計離倉時間</td>
                     <td>國際貨運箱號</td>
                     <td>國際貨運追蹤號碼</td>
