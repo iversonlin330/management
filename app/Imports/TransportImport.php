@@ -6,6 +6,7 @@ use App\Models\Transport;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 use Maatwebsite\Excel\Concerns\WithStartRow;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 class TransportImport implements ToModel, WithStartRow, WithCalculatedFormulas
 {
@@ -25,7 +26,7 @@ class TransportImport implements ToModel, WithStartRow, WithCalculatedFormulas
             'amount' => $row[5],
             'price_total' => $row[6],
             'weight_total' => $row[7],
-            'out_date' => $row[8],
+            'out_date' => Date::excelToDateTimeObject($row[8])->format('Y-m-d'),
             'box_no' => $row[9],
             'transport_no' => $row[10],
             'user_id' => (int)str_replace('CM', '', $row[11])
