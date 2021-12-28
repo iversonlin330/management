@@ -90,7 +90,7 @@
                             <p>收件地址</p><input type="text" name="get_address" placeholder="（若與聯絡地址相同，無需填寫）">
                         </span>
                         <span class="register-data">
-                            <p>收件人電話*</p><input type="tel" name="get_phone" placeholder="（若與聯絡地址相同，無需填寫）" required>
+                            <p>收件人電話</p><input type="tel" name="get_phone" placeholder="（若與聯絡地址相同，無需填寫）">
                         </span>
                         <span class="register-data">
                             <p>LINE ID*</p><input type="text" name="line_id" placeholder="" required>

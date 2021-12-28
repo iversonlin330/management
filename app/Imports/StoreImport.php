@@ -4,10 +4,11 @@ namespace App\Imports;
 
 use App\Models\Store;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 
-class StoreImport implements ToModel, WithStartRow
+class StoreImport implements ToModel, WithStartRow, WithCalculatedFormulas
 {
     /**
      * @param array $row
