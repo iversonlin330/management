@@ -59,6 +59,17 @@ class UserController extends Controller
         return back()->with('create', true);
     }
 
+    public function sendVerifyEmail(Request $request){
+        $requestData = $request->all();
+        $data = User::find($requestData['user_id']);
+
+        $data['url'] = url('/verify?account=' . $data['account'] . '&token=' . $data['token']);
+
+        Mail::to($data['email'])
+            ->send(new Register($data));
+        return "OK";
+    }
+
     /**
      * Display the specified resource.
      *

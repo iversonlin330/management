@@ -53,6 +53,7 @@ Route::post('/register', [LoginController::class, 'register']);
 Route::get('/verify', [LoginController::class, 'getVerify']);
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/sendVerifyEmail', [UserController::class, 'sendVerifyEmail']);
     Route::get('/setMember', [IndexController::class, 'setMember']);
     Route::get('/admin', [IndexController::class, 'admin']);
     Route::get('/member', [IndexController::class, 'member']);

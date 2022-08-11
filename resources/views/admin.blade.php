@@ -34,7 +34,13 @@
                     <tr class="infro-title gold-line">
                         <td>{{ $user->u_id }}</td>
                         <td><a href="{{ url('/setMember?user_id='.$user->id) }}">{{ $user->name }}</td>
-                        <td>{{ ($user->email_verified_at == null)? '未開通' : '已開通' }}</td>
+                        <td class="member-index-btn">
+                            @if($user->email_verified_at == null)
+                                未開通 <a href="{{ url('/sendVerifyEmail?user_id='.$user->id) }}" target="_blank">重寄驗證信</a>
+                            @else
+                                已開通
+                            @endif
+                        </td>
                         <td class="member-index-btn">
                             <form action="{{ url('users/'.$user->id) }}" method="post">
                                 @method('DELETE')
