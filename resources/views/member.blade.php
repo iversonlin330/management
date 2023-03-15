@@ -79,6 +79,7 @@
         <!-- Gold block -->
         <div class="gold-block col">
             <!-- Gold block-1 -->
+            @if(0)
             <div id="#GoldRecord" class="gold-flow col">
                 <!-- gold stored -->
                 <div class="member-block">
@@ -142,6 +143,8 @@
                     </div>
                 </div>
             </div>
+            @endif
+            @if(0)
             <!-- Gold block-2 -->
             <div class="gold-flow col">
                 <!-- gold stored -->
@@ -183,12 +186,13 @@
                     </div>
                 </div>
             </div>
+            @endif
             <!-- Gold block-3 -->
             <div id="#StoreRecord" class="gold-flow col">
                 <!-- gold stored -->
                 <div class="member-block">
                     <div class="member-title">
-                        <h2>入倉履歷</h2>
+                        <h2>出入倉履歷</h2>
                         @if(Auth::user()->role == 99)
                             <button class="btn member-infro gold-add vendor-btn" onclick="create_modalSec()">新增</button>
                         @endif
@@ -199,9 +203,71 @@
                             <tbody class="stored-body">
                             <!-- title -->
                             <tr class="stored-table-title infro-title gold-line stored-title">
-                                <td>入倉日期</td>
+                                <td>出貨日期</td>
+                                <td>入庫日期</td>
                                 <td>國內運輸公司/取貨地點</td>
-                                <td>日本國內運輸公司<br>追蹤單號</td>
+                                <td>日本國內運輸公司追蹤單號</td>
+                                <td>內容</td>
+                                <td>數量</td>
+                                <td></td>
+                            </tr>
+                            <!-- body -->
+                            <!-- gold stored -->
+                            @foreach($current_user->stores as $store)
+                                <tr class="infro-title stored-title gold-line">
+                                    <td>{{ $store->c_date }}</td>
+                                    <td>{{ $store->in_date }}</td>
+                                    <td>{{ $store->location }}</td>
+                                    <td>{{ $store->store_no }}</td>
+                                    <td>{{ $store->content }}</td>
+                                    <td>{{ $store->amount }}</td>
+                                    @if(Auth::user() -> role == 99)
+                                        <td class="vendor-btn">
+                                            <form class="explanation-btn" action="{{ url('stores/'.$store->id) }}"
+                                                  method="post">
+                                                <input type="button" value="編輯"
+                                                       data-url="{{ url('stores/'.$store->id) }}"
+                                                       data-c_date="{{ $store->c_date }}"
+                                                       data-in_date="{{ $store->in_date }}"
+                                                       data-location="{{ $store->location }}"
+                                                       data-store_no="{{ $store->store_no }}"
+                                                       data-content="{{ $store->content }}"
+                                                       data-amount="{{ $store->amount }}"
+                                                       onclick="edit_modalSec(this)">
+                                                @method('DELETE')
+                                                <input type="submit" value="刪除">
+                                            </form>
+                                        </td>
+                                    @endif
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="#StoreRecord" class="gold-flow col">
+                <!-- gold stored -->
+                <div class="member-block">
+                    <div class="member-title">
+                        <h2>出貨明細</h2>
+                        @if(Auth::user()->role == 99)
+                            <button class="btn member-infro gold-add vendor-btn" onclick="create_modalSec()">新增</button>
+                        @endif
+                    </div>
+                    <!-- table stored -->
+                    <div class="stored-table thr-stored-block">
+                        <table class="personal-information stored-information">
+                            <tbody class="stored-body">
+                            <!-- title -->
+                            <tr class="stored-table-title infro-title gold-line stored-title">
+                                <td>日本出倉時間</td>
+                                <td>台灣出貨日期</td>
+                                <td>箱號</td>
+                                <td>包裹重量(參考值)</td>
+                                <td>國內運輸方式</td>
+                                <td>追蹤單號</td>
+                                <td>備註</td>
                             </tr>
                             <!-- body -->
                             <!-- gold stored -->
@@ -209,7 +275,11 @@
                                 <tr class="infro-title stored-title gold-line">
                                     <td>{{ $store->c_date }}</td>
                                     <td>{{ $store->location }}</td>
-                                    <td><a href="{{ url('stores/'.$store->id) }}">{{ $store->store_no }}</a></td>
+                                    <td>{{ $store->c_date }}</td>
+                                    <td>{{ $store->location }}</td>
+                                    <td>{{ $store->c_date }}</td>
+                                    <td>{{ $store->location }}</td>
+                                    <td>{{ $store->location }}</td>
                                     @if(Auth::user() -> role == 99)
                                         <td class="vendor-btn">
                                             <form class="explanation-btn" action="{{ url('stores/'.$store->id) }}"
@@ -391,13 +461,22 @@
                     @method("PUT")
                     <div class="modal-body edit-body">
                         <span class="edit-data gold-data">
-                            <p>入倉日期</p><input type="date" name="c_date" value="" required>
+                            <p>出貨日期</p><input type="date" name="c_date" value="" required>
+                        </span>
+                        <span class="edit-data gold-data">
+                            <p>入庫日期</p><input type="text" name="in_date" value="" required>
                         </span>
                         <span class="edit-data">
                             <p>國內運輸公司/取貨地點</p><input type="text" name="location" value="" required>
                         </span>
-                        <span class="edit-data gold-data">
-                            <p>日本國內運輸公司<br>追蹤單號</p><input type="text" name="store_no" value="" required>
+                        <span class="edit-data">
+                            <p>日本國內運輸公司追蹤單號</p><input type="text" name="store_no" value="" required>
+                        </span>
+                        <span class="edit-data">
+                            <p>內容</p><input type="text" name="content" value="" required>
+                        </span>
+                        <span class="edit-data">
+                            <p>數量</p><input type="text" name="amount" value="" required>
                         </span>
                     </div>
                     <!-- gold edit submit -->
@@ -453,8 +532,11 @@
         function edit_modalSec(obj) {
             let url = $(obj).data('url');
             let c_date = $(obj).data('c_date');
+            let in_date = $(obj).data('in_date');
             let location = $(obj).data('location');
             let store_no = $(obj).data('store_no');
+            let content = $(obj).data('content');
+            let amount = $(obj).data('amount');
             console.log(url);
             console.log(c_date);
             console.log(location);
@@ -463,8 +545,11 @@
             //$("[name='order']").val(order);
             $("#goldEditModalSec form").attr('action', url);
             $("#goldEditModalSec form").find("[name='c_date']").val(c_date);
+            $("#goldEditModalSec form").find("[name='in_date']").val(in_date);
             $("#goldEditModalSec form").find("[name='location']").val(location);
             $("#goldEditModalSec form").find("[name='store_no']").val(store_no);
+            $("#goldEditModalSec form").find("[name='content']").val(content);
+            $("#goldEditModalSec form").find("[name='amount']").val(amount);
             $("#goldEditModalSec form").find("[name='_method']").val("PUT");
             $("#goldEditModalSecTitle").text("編輯入倉履歷");
 

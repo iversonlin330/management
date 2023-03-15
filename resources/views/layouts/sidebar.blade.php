@@ -81,12 +81,13 @@
         <input type="submit">
     </form>
 
+    @if(0)
     <form action="{{ url('/transports/import') }}" method="post" enctype="multipart/form-data" hidden>
         運輸紀錄匯入
         <input id="transport_input" type="file" name="file">
         <input type="submit">
     </form>
-
+    @endif
     <form action="{{ url('/ships/import') }}" method="post" enctype="multipart/form-data" hidden>
         出貨明細匯入
         <input id="ship_input" type="file" name="file">
