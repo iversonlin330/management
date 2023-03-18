@@ -120,4 +120,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Store','user_id','id');
     }
+
+    public function transports()
+    {
+        return $this->hasMany('App\Models\Transport','user_id','id');
+    }
 }

@@ -33,8 +33,8 @@ class Store extends Model
 
     protected $guarded = ['id'];
 
-    public function transports()
-    {
-        return $this->hasMany('App\Models\Transport','store_id','store_no');
-    }
+//    public function transports()
+//    {
+//        return $this->hasMany('App\Models\Transport','store_id','store_no');
+//    }
 }

@@ -18,24 +18,14 @@ class TransportImport implements ToModel, WithStartRow, WithCalculatedFormulas
     public function model(array $row)
     {
         return new Transport([
-            'store_id' => $row[0],
-            'name' => $row[1],
-            'jan_code' => $row[2],
-            'price' => $row[3],
+            'jan_code' => $row[0],
+            'out_date' => $row[1],
+            'user_id' => (int)str_replace('CM', '', $row[2]),
+            'box_no' => $row[3],
             'weight' => $row[4],
             'amount' => $row[5],
-            'price_total' => $row[6],
-            'weight_total' => $row[7],
-            'out_date' => Date::excelToDateTimeObject($row[8])->format('Y-m-d'),
-            'box_no' => $row[9],
-            'transport_no' => $row[10],
-            'user_id' => (int)str_replace('CM', '', $row[11])
-//            'c_date' => Date::excelToDateTimeObject($row['c_date']),
-//            'amount' => $row['amount'],
-//            'rate' => $row['rate'],
-//            'jpy' => $row['jpy'],
-//            'note' => $row['note'],
-//            'user_id' => $row['user_id']
+            'transport_no' => $row[6],
+            'name' => $row[7],
         ]);
     }
 

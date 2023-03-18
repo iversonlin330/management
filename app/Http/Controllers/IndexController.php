@@ -58,6 +58,7 @@ class IndexController extends Controller
 
         $use_datas = [];
         $total_use = 0;
+        /*
         foreach ($current_user->stores as $store) {
             foreach ($store->transports as $transport) {
                 $total = 0;
@@ -76,7 +77,7 @@ class IndexController extends Controller
 //                'order_no' => $store->store_no,
 //            ];
         }
-
+*/
         return view('member', compact('current_user', 'use_datas', 'total_use'));
     }
 

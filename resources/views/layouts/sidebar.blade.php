@@ -36,9 +36,11 @@
                     data-parent="#accordion">
                 <div class="card-body">
                     <ul class="sidebar-list">
-                        <li onclick='$("#store_input").click()'>匯入入倉履歷</li>
-                        <li onclick='$("#transport_input").click()'>匯入運輸紀錄</li>
+                        <li onclick='$("#store_input").click()'>匯入出入倉履歷</li>
+                        <li onclick='$("#transport_input").click()'>匯入出貨明細</li>
+                        @if(0)
                         <li onclick='$("#ship_input").click()'>匯入出貨明細</li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -81,19 +83,19 @@
         <input type="submit">
     </form>
 
-    @if(0)
+
     <form action="{{ url('/transports/import') }}" method="post" enctype="multipart/form-data" hidden>
         運輸紀錄匯入
         <input id="transport_input" type="file" name="file">
         <input type="submit">
     </form>
-    @endif
+    @if(0)
     <form action="{{ url('/ships/import') }}" method="post" enctype="multipart/form-data" hidden>
         出貨明細匯入
         <input id="ship_input" type="file" name="file">
         <input type="submit">
     </form>
-
+    @endif
     <div class="signout">
          <a href="{{ url('logout') }}">登出</a>
     </div>

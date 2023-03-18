@@ -252,7 +252,7 @@
                     <div class="member-title">
                         <h2>出貨明細</h2>
                         @if(Auth::user()->role == 99)
-                            <button class="btn member-infro gold-add vendor-btn" onclick="create_modalSec()">新增</button>
+                            <button class="btn member-infro gold-add vendor-btn" onclick="create_modalTrans()">新增</button>
                         @endif
                     </div>
                     <!-- table stored -->
@@ -271,25 +271,29 @@
                             </tr>
                             <!-- body -->
                             <!-- gold stored -->
-                            @foreach($current_user->stores as $store)
+                            @foreach($current_user->transports as $transport)
                                 <tr class="infro-title stored-title gold-line">
-                                    <td>{{ $store->c_date }}</td>
-                                    <td>{{ $store->location }}</td>
-                                    <td>{{ $store->c_date }}</td>
-                                    <td>{{ $store->location }}</td>
-                                    <td>{{ $store->c_date }}</td>
-                                    <td>{{ $store->location }}</td>
-                                    <td>{{ $store->location }}</td>
+                                    <td>{{ $transport->jan_code }}</td>
+                                    <td>{{ $transport->out_date }}</td>
+                                    <td>{{ $transport->box_no }}</td>
+                                    <td>{{ $transport->weight }}</td>
+                                    <td>{{ $transport->amount }}</td>
+                                    <td>{{ $transport->transport_no }}</td>
+                                    <td>{{ $transport->name }}</td>
                                     @if(Auth::user() -> role == 99)
                                         <td class="vendor-btn">
-                                            <form class="explanation-btn" action="{{ url('stores/'.$store->id) }}"
+                                            <form class="explanation-btn" action="{{ url('transports/'.$transport->id) }}"
                                                   method="post">
                                                 <input type="button" value="編輯"
-                                                       data-url="{{ url('stores/'.$store->id) }}"
-                                                       data-c_date="{{ $store->c_date }}"
-                                                       data-location="{{ $store->location }}"
-                                                       data-store_no="{{ $store->store_no }}"
-                                                       onclick="edit_modalSec(this)">
+                                                       data-url="{{ url('transports/'.$transport->id) }}"
+                                                       data-jan_code="{{ $transport->jan_code }}"
+                                                       data-out_date="{{ $transport->out_date }}"
+                                                       data-box_no="{{ $transport->box_no }}"
+                                                       data-weight="{{ $transport->weight }}"
+                                                       data-amount="{{ $transport->amount }}"
+                                                       data-transport_no="{{ $transport->transport_no }}"
+                                                       data-name="{{ $transport->name }}"
+                                                       onclick="edit_modalTrans(this)">
                                                 @method('DELETE')
                                                 <input type="submit" value="刪除">
                                             </form>
@@ -490,6 +494,54 @@
             </div>
         </div>
     </div>
+    <div class="modal edit-modal" id="goldEditModalTrans" tabindex="-1" role="dialog"
+         aria-labelledby="editModal" aria-hidden="true">
+        <div class="modal-dialog edit-dialog " role="document">
+            <div class="modal-content edit-content">
+                <div class="modal-header edit-header">
+                    <h5 class="edit-title" id="goldEditModalTransTitle">編輯預付金紀錄</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- gold edit body -->
+                <form action="" method="POST">
+                    @method("PUT")
+                    <div class="modal-body edit-body">
+                        <span class="edit-data gold-data">
+                            <p>日本出倉時間</p><input type="text" name="jan_code" value="" required>
+                        </span>
+                        <span class="edit-data gold-data">
+                            <p>台灣出貨日期</p><input type="text" name="out_date" value="" required>
+                        </span>
+                        <span class="edit-data">
+                            <p>箱號</p><input type="text" name="box_no" value="" required>
+                        </span>
+                        <span class="edit-data">
+                            <p>包裹重量(參考值)</p><input type="text" name="weight" value="" required>
+                        </span>
+                        <span class="edit-data">
+                            <p>國內運輸方式</p><input type="text" name="amount" value="" required>
+                        </span>
+                        <span class="edit-data">
+                            <p>追蹤單號</p><input type="text" name="transport_no" value="" required>
+                        </span>
+                        <span class="edit-data">
+                            <p>備註</p><input type="text" name="name" value="" required>
+                        </span>
+                    </div>
+                    <!-- gold edit submit -->
+                    <div class="modal-footer edit-footer">
+                        <button type="button" class="btn btn-secondary"
+                                data-dismiss="modal">關閉
+                        </button>
+                        <button type="submit" class="btn btn-primary">儲存變更</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script>
         // gold edit modal-First
         function create_modalFirst() {
@@ -554,6 +606,39 @@
             $("#goldEditModalSecTitle").text("編輯入倉履歷");
 
             $('#goldEditModalSec').modal('show');
+        }
+
+        function create_modalTrans() {
+            $("#goldEditModalTrans form").attr('action', "{{ url('transports') }}");
+            $("#goldEditModalTrans form").find("input").val("");
+
+            $("#goldEditModalTransTitle").text("新增出貨明細");
+            $('#goldEditModalTrans').modal('show');
+        }
+
+        function edit_modalTrans(obj) {
+            let url = $(obj).data('url');
+            let jan_code = $(obj).data('jan_code');
+            let out_date = $(obj).data('out_date');
+            let box_no = $(obj).data('box_no');
+            let weight = $(obj).data('weight');
+            let amount = $(obj).data('amount');
+            let transport_no = $(obj).data('transport_no');
+            let name = $(obj).data('name');
+
+            //$("[name='order']").val(order);
+            $("#goldEditModalTrans form").attr('action', url);
+            $("#goldEditModalTrans form").find("[name='jan_code']").val(jan_code);
+            $("#goldEditModalTrans form").find("[name='out_date']").val(out_date);
+            $("#goldEditModalTrans form").find("[name='box_no']").val(box_no);
+            $("#goldEditModalTrans form").find("[name='weight']").val(weight);
+            $("#goldEditModalTrans form").find("[name='amount']").val(amount);
+            $("#goldEditModalTrans form").find("[name='transport_no']").val(transport_no);
+            $("#goldEditModalTrans form").find("[name='name']").val(name);
+            $("#goldEditModalTrans form").find("[name='_method']").val("PUT");
+            $("#goldEditModalTransTitle").text("編輯出貨明細");
+
+            $('#goldEditModalTrans').modal('show');
         }
     </script>
 @endsection
