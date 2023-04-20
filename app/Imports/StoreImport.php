@@ -18,7 +18,7 @@ class StoreImport implements ToModel, WithStartRow, WithCalculatedFormulas
     public function model(array $row)
     {
         return new Store([
-            'c_date' => Date::excelToDateTimeObject($row[0]),
+            'c_date' => $row[0],
             'user_id' => (int)str_replace('CM', '', $row[1]),
             'in_date' => $row[2],
             'location' => $row[3],
